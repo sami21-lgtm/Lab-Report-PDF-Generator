@@ -1,43 +1,53 @@
-🏫 Daffodil International University
+🏫 # 🏫 Daffodil International University  
+## Department of Software Engineering  
 
-Created by Sami
+---
 
-📘 Introduction
+# 🧮 Lab Report  
 
-Welcome to this educational repository under Daffodil International University.
-This project is designed to help students explore the beauty of mathematics and programming through creative and interactive coding examples.
+---
 
-Students will learn how to:
+## 📘 Submitted By  
+**Name:** Sami  
+**Department:** Software Engineering  
+**Institution:** Daffodil International University  
+**Course:** ___________________________  
+**Semester:** _________________________  
 
-Use Python for mathematical visualization.
+---
 
-Understand recursion and iteration.
+## 👨‍💻 Developed By  
+**Sami**  
+Department of Software Engineering  
+**Daffodil International University**  
 
-Apply computational thinking to real-world problems.
+---
 
-🧩 Topics Covered
+## 📄 Description  
+This repository contains lab work and practical programming exercises completed under the **Department of Software Engineering**, **Daffodil International University**.  
+It includes code examples, problem-solving activities, and course-related projects designed to strengthen programming and analytical skills.  
 
-Introduction to Turtle Graphics
+---
 
-Drawing and Visual Patterns
+## 🧠 Objectives  
+- To apply theoretical concepts through practical implementation.  
+- To develop problem-solving and algorithmic thinking skills.  
+- To gain hands-on experience with programming tools and methods.  
+- To improve coding accuracy, logic, and project documentation.  
 
-Recursive Shapes and Designs
+---
 
-Mathematical Simulations
+## ⚙️ Tools & Technologies  
+- **Language:** Python / C / C++ / Java *(as applicable)*  
+- **Environment:** Jupyter Notebook / Code::Blocks / VS Code  
+- **Version Control:** Git & GitHub  
 
-Creative Coding with Python
+---
 
-🧠 Tools Used
+## 🏁 Conclusion  
+This lab work demonstrates continuous learning and practical skill development in software engineering through hands-on coding and experimentation.  
+It reflects the academic effort and creativity encouraged at **Daffodil International University**.  
 
-Python 3
-
-Jupyter Notebook / Google Colab
-
-Libraries: turtle, numpy, matplotlib
-
-🎯 Objective
-
-To help students at Daffodil International University develop strong problem-solving and coding skills by combining mathematics, creativity, and programming.
 
 👨‍🏫 Developed at
 
