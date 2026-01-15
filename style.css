@@ -8,11 +8,18 @@ h2 { text-align: center; margin-bottom: 4px; color: #002b59; font-size: 22px; }
 .dev-line { text-align: center; font-size: 13px; color: #666; margin-bottom: 4px; }
 
 /* নতুন লাইন – webpage এ দেখাবে, print-এ বাদ */
+.dev-line {
+  text-align: center;
+  font-size: 10px;
+  color: #666;
+  margin-bottom: 2px;   /* ছোট করে নিচের গ্যাপ */
+}
+
 .dev-sub {
   text-align: center;
-  font-size: 12px;
+  font-size: 10px;
   color: #666;
-  margin-bottom: 20px;
+  margin-bottom: 15px;  /* মোটামুটি কম গ্যাপ */
 }
 
 .split-container { display: flex; gap: 25px; flex-wrap: wrap; }
