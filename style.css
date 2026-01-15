@@ -4,11 +4,11 @@
 body { background: #f4f7fa; display: flex; justify-content: center; padding: 30px; }
 .wrapper { width: 100%; max-width: 900px; background: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
 
-/* ---------- logo center + small ---------- */
+/* ---------- logo মাঝে ছোট করে ---------- */
 .header-logo {
   display: block;
-  height: 40px; /* ছোট করে */
-  margin: 0 auto 6px; /* উপরে মাঝে, নিচে ৬ px গ্যাপ */
+  height: 40px;
+  margin: 0 auto 6px; /* মাঝে, নিচে ৬ px গ্যাপ */
 }
 
 h2 { text-align: center; margin-bottom: 4px; color: #002b59; font-size: 22px; }
@@ -100,8 +100,6 @@ footer {
 
 /* ---------- mobile responsive ---------- */
 @media (max-width: 768px) {
-  .split-container { flex-direction: column; }
-  .left-pane, .right-pane { flex: 1 1 100%; }
   .cover-box {
     width: 100%;
     height: auto;
