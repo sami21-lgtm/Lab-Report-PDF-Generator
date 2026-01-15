@@ -51,12 +51,6 @@ button:hover { background: #00509e; }
   box-shadow: 0 0 10px rgba(0,0,0,.08);
 }
 
-.logo {
-  display: block;
-  height: 100px;
-  margin: 0 auto 30px;
-}
-
 .cover-box h2 {
   text-align: center;
   margin-bottom: 40px;
