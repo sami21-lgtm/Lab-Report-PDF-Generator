@@ -4,6 +4,19 @@
 body { background: #f4f7fa; display: flex; justify-content: center; padding: 30px; }
 .wrapper { width: 100%; max-width: 900px; background: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
 
+/* ---------- header logo + title inline ---------- */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.header-logo {
+  height: 32px; /* ছোট করে */
+  width: auto;
+}
+
 h2 { text-align: center; margin-bottom: 4px; color: #002b59; font-size: 22px; }
 
 /* developed by + department – same font, small size */
