@@ -57,25 +57,40 @@ button:hover { background: #00509e; }
   margin: 0 auto 30px;
 }
 
-.cover-box h2 {
+h1 {
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 22px;
+  margin-bottom: 10px;
+  font-size: 24px;
   color: #002b59;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+.lab-no {
+  text-align: center;
   margin-bottom: 40px;
+  font-size: 16px;
+  color: #444;
 }
 
-td {
-  padding: 10px 8px;
-  border-bottom: 1px solid #e4e4e4;
+.submitted-box,
+.student-box {
+  width: 240px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 30px;
   font-size: 15px;
+  line-height: 1.6;
 }
-td:first-child { font-weight: 600; width: 35%; }
+
+.submitted-box {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.student-box {
+  margin-left: 0;
+  margin-right: auto;
+}
 
 footer {
   position: absolute;
