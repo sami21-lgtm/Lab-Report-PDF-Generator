@@ -1,73 +1,78 @@
-/**
- * Developed by Emtiaz Hossain Sami | 2026
- * DIU Cover Page Generator Logic
- */
+/* Basic reset */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-function updatePage() {
-    // ইনপুট থেকে ডেটা নিয়ে আউটপুটে বসানো
-    const fields = {
-        'outType': 'type',
-        'outTopic': 'topic',
-        'outCC': 'courseCode',
-        'outCT': 'courseTitle',
-        'outName': 'name',
-        'outId': 'id',
-        'outSec': 'section',
-        'outInsName': 'insName',
-        'outInsDes': 'insDesig'
-    };
+body { background: #f2f6ff; display: flex; justify-content: center; padding: 30px; }
+.wrapper { width: 100%; max-width: 700px; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 18px rgba(0,0,0,.1); }
 
-    for (let outId in fields) {
-        let value = document.getElementById(fields[outId]).value;
-        document.getElementById(outId).innerText = value || (outId.includes('out') ? "---" : "");
-    }
+h1 { text-align: center; margin-bottom: 5px; color: #002b59; }
+.dev-line{ text-align:center; font-size:13px; color:#666; margin-bottom:20px; }
 
-    // টাইপ টেক্সট বড় হাতের করা
-    document.getElementById('outType').innerText = document.getElementById('type').value.toUpperCase();
-    
-    // তারিখ অটোমেটিক ফরম্যাট করা (যেমন: 15 January, 2026)
-    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    document.getElementById('outDate').innerText = new Date().toLocaleDateString('en-GB', options);
+label { display: block; margin: 15px 0 5px; font-weight: 600; }
+
+input[type=text]{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-// PDF হিসেবে ডাউনলোড করার ফাংশন
-function downloadPDF() {
-    const element = document.getElementById('coverPage');
-    const studentName = document.getElementById('name').value || "Student";
-    
-    const opt = {
-        margin: 0,
-        filename: `DIU_CoverPage_${studentName}.pdf`,
-        image: { type: 'jpeg', quality: 1.0 },
-        html2canvas: { 
-            scale: 3, // হাই কোয়ালিটির জন্য স্কেল ৩ রাখা হয়েছে
-            useCORS: true, 
-            logging: false 
-        },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
+button{
+  padding: 10px 18px;
+  background: #002b59;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+button:hover{ background: #00509e; }
 
-    // ডাউনলোড শুরু
-    html2pdf().set(opt).from(element).save();
+/* Preview box (A4 portrait ratio) */
+.cover-box{
+  width: 595px;          /* A4 72 dpi width */
+  height: 842px;         /* A4 72 dpi height */
+  margin: 25px auto;
+  padding: 60px 50px;
+  background: #fff;
+  border: 1px solid #ddd;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,.08);
 }
 
-// Image হিসেবে ডাউনলোড করার ফাংশন
-function downloadImage() {
-    const element = document.getElementById('coverPage');
-    
-    html2canvas(element, {
-        scale: 3,
-        useCORS: true,
-        backgroundColor: "#ffffff"
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'DIU_Cover_Sami_2026.png';
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-    });
+.logo{
+  display: block;
+  height: 100px;
+  margin: 0 auto 30px;
 }
 
-// পেজ লোড হওয়ার সাথে সাথে প্রিভিউ আপডেট করা
-window.onload = function() {
-    updatePage();
-};
+.cover-box h2{
+  text-align: center;
+  margin-bottom: 45px;
+  font-size: 22px;
+  color: #002b59;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+td{
+  padding: 10px 8px;
+  border-bottom: 1px solid #e4e4e4;
+}
+td:first-child{ font-weight: 600; width: 35%; }
+
+footer{
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.hidden{ display: none; }
