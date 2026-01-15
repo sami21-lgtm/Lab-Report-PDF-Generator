@@ -91,6 +91,22 @@ footer {
 
 .hidden { display: none; }
 
+/* ---------- mobile responsive ---------- */
+@media (max-width: 768px) {
+  .split-container { flex-direction: column; }
+  .left-pane, .right-pane { flex: 1 1 100%; }
+  .cover-box {
+    width: 100%;
+    height: auto;
+    padding: 30px 20px;
+    margin: 15px 0;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  .logo { height: 80px; }
+  .gen-btn { font-size: 14px; }
+}
+
 /* ---------- print-এ overlay + dev lines বাদ ---------- */
 @media print {
   .dev-line,
