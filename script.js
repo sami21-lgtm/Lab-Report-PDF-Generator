@@ -1,26 +1,20 @@
-const logoInput   = document.getElementById('logoInput');
+// ---------- auto DIU logo (transparent PNG) ----------
+const LOGO_URL =
+  'https://upload.wikimedia.org/wikipedia/en/3/3c/Daffodil_International_University_logo.png';
+
 const coverForm   = document.getElementById('coverForm');
 const previewArea = document.getElementById('previewArea');
 const coverPage   = document.getElementById('coverPage');
 const downloadBtn = document.getElementById('downloadBtn');
+const logoPrev    = document.getElementById('logoPreview');
 
-let logoDataURL = '';
+// preload logo
+const img = new Image();
+img.crossOrigin = 'anonymous';
+img.src = LOGO_URL;
+img.onload = () => logoPrev.src = LOGO_URL;
 
-/* Logo preview */
-logoInput.addEventListener('change', e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    logoDataURL = ev.target.result;
-    const logoPreview = document.getElementById('logoPreview');
-    logoPreview.src = logoDataURL;
-    logoPreview.style.display = 'block';
-  };
-  reader.readAsDataURL(file);
-});
-
-/* Form submit -> show preview */
+/* form submit -> show preview */
 coverForm.addEventListener('submit', e => {
   e.preventDefault();
 
@@ -30,6 +24,7 @@ coverForm.addEventListener('submit', e => {
   document.getElementById('pSemester').textContent = document.getElementById('semester').value;
   document.getElementById('pSid').textContent      = document.getElementById('sid').value;
   document.getElementById('pSname').textContent    = document.getElementById('sname').value;
+  document.getElementById('pSdept').textContent    = document.getElementById('sdept').value;
   document.getElementById('pFname').textContent    = document.getElementById('fname').value;
   document.getElementById('pFdept').textContent    = document.getElementById('fdept').value;
 
@@ -42,7 +37,7 @@ coverForm.addEventListener('submit', e => {
   window.scrollTo(0, previewArea.offsetTop);
 });
 
-/* Download PDF */
+/* download PDF */
 downloadBtn.addEventListener('click', () => {
   html2canvas(coverPage, { scale: 2, useCORS: true }).then(canvas => {
     const imgData = canvas.toDataURL('image/png');
