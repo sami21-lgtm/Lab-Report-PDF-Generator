@@ -1,73 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIU Lab + Cover Page</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIU Lab + Cover Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-  <div class="wrapper">
-    
-    <div class="logo-container">
-        <img src="https://daffodilvarsity.edu.bd/images/logo.png" alt="DIU Logo">
-    </div>
-
-    <div class="split-container">
-      <div class="left-pane">
-        <h3>Common Data</h3>
-        <input type="text" placeholder="Course Code" id="course" required/>
-        <input type="text" placeholder="Section" id="section" required/>
-        <input type="text" placeholder="Semester" id="semester" required/>
-        <input type="text" placeholder="Student ID" id="sid" required/>
-        <input type="text" placeholder="Student Name" id="sname" required/>
-        <input type="text" placeholder="Student Department" id="sdept" required/>
-        <input type="text" placeholder="Faculty Name" id="fname" required/>
-        <input type="text" placeholder="Faculty Department" id="fdept" required/>
-
-        <label>Date (MM/YY/DD)</label>
-        <div class="date-row">
-          <input type="text" id="mm" maxlength="2" placeholder="MM"/>
-          <span>/</span>
-          <input type="text" id="yy" maxlength="2" placeholder="YY"/>
-          <span>/</span>
-          <input type="text" id="dd" maxlength="2" placeholder="DD"/>
-        </div>
-      </div>
-
-      <div class="right-pane">
-        <div class="toggle-bar">
-          <button id="labBtn" class="toggle active">Lab Report</button>
-          <button id="covBtn" class="toggle">Cover Page</button>
+    <div class="wrapper">
+        
+        <div class="logo-container">
+            <img src=" alt="DIU Logo" class="header-logo" id="mainLogo">
+            <h2 class="main-title">DIU Lab Report & Cover Page Generator</h2>
         </div>
 
-        <div id="labOnly" class="extra-box">
-          <input type="text" placeholder="Lab No." id="labNo" required/>
-          <input type="text" placeholder="Lab Title" id="labTitle" required/>
+        <div class="split-container">
+            <div class="left-pane">
+                <h3>Common Data</h3>
+                <input type="text" placeholder="Course Code" id="course" required>
+                <input type="text" placeholder="Section" id="section" required>
+                <input type="text" placeholder="Semester" id="semester" required>
+                <input type="text" placeholder="Student ID" id="sid" required>
+                <input type="text" placeholder="Student Name" id="sname" required>
+                <input type="text" placeholder="Student Department" id="sdept" required>
+                <input type="text" placeholder="Faculty Name" id="fname" required>
+                <input type="text" placeholder="Faculty Department" id="fdept" required>
+
+                <label>Date (MM/YY/DD)</label>
+                <div class="date-row">
+                    <input type="text" id="mm" maxlength="2" placeholder="MM">
+                    <span>/</span>
+                    <input type="text" id="yy" maxlength="2" placeholder="YY">
+                    <span>/</span>
+                    <input type="text" id="dd" maxlength="2" placeholder="DD">
+                </div>
+            </div>
+
+            <div class="right-pane">
+                <div class="toggle-bar">
+                    <button id="labBtn" class="toggle active">Lab Report</button>
+                    <button id="covBtn" class="toggle">Cover Page</button>
+                </div>
+
+                <div id="labOnly" class="extra-box">
+                    <input type="text" placeholder="Lab No." id="labNo">
+                    <input type="text" placeholder="Lab Title" id="labTitle">
+                </div>
+
+                <div id="covOnly" class="extra-box hidden">
+                    <input type="text" placeholder="Title of Report" id="covTitle">
+                </div>
+
+                <button id="genBtn" class="gen-btn">Generate Now</button>
+            </div>
         </div>
 
-        <div id="covOnly" class="extra-box hidden">
-          <input type="text" placeholder="Title of Report" id="covTitle" required/>
+        <div id="previewArea" class="hidden">
+            <div id="outputPage" class="cover-box"></div>
+            <div class="action-btns">
+                <button id="downloadBtn" class="download-btn">Download PDF</button>
+                <button id="printBtn" class="print-btn">Print Report</button>
+            </div>
         </div>
 
-        <button id="genBtn" class="gen-btn">Generate Lab Report</button>
-      </div>
+        <footer class="footer-dev">
+            <p class="dev-line">Developed by Emtiaz Hossain Sami</p>
+            <p class="dev-sub">Department of Software Engineering, Daffodil International University</p>
+            <p class="dev-year">2026</p>
+        </footer>
     </div>
 
-    <div id="previewArea" class="hidden">
-      <div id="outputPage" class="cover-box"></div>
-      <button id="downloadBtn">Download PDF</button>
-      <button id="printBtn" class="gen-btn">Print (with shadow logo)</button>
-    </div>
-
-   <div class="footer-dev">
-      <p class="dev-line">Developed by Emtiaz Hossain Sami</p>
-      <p class="dev-sub">Department of Software Engineering, Daffodil International University</p>
-      <p class="dev-year">2026</p>
-    </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
