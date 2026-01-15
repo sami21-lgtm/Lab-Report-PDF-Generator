@@ -1,93 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIU Cover Page Generator</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <meta charset="UTF-8"/>
+  <title>DIU Cover Page Generator</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
+  <div class="wrapper">
+    <h1>DIU Cover Page Generator</h1>
+    <p class="dev-line">Developed by Md. Emtiaz Hossain Sami</p>
 
-    <div class="sidebar no-print">
-        <h2>Input Details</h2>
-        <select id="type">
-            <option value="Lab Report">Lab Report</option>
-            <option value="Assignment">Assignment</option>
-            <option value="Project">Project Case Study</option>
-        </select>
-        <input type="text" id="topic" placeholder="Topic Name">
-        <input type="text" id="courseCode" placeholder="Course Code">
-        <input type="text" id="courseTitle" placeholder="Course Title">
-        
-        <h3>Student Info</h3>
-        <input type="text" id="name" placeholder="Student Name">
-        <input type="text" id="id" placeholder="Student ID">
-        <input type="text" id="section" placeholder="Section">
-        
-        <h3>Instructor Info</h3>
-        <input type="text" id="insName" placeholder="Instructor Name">
-        <input type="text" id="insDesig" placeholder="Designation">
+    <label</label>
+    <input type="file" id="logoInput" accept="image/*"/>
 
-        <div class="btn-group">
-            <button onclick="updatePage()" class="btn-update">Preview</button>
-            <button onclick="downloadPDF()" class="btn-pdf">Download PDF</button>
-            <button onclick="downloadImage()" class="btn-img">Download Image</button>
-        </div>
+    <form id="coverForm">
+      <input type="text" placeholder="Title of Report" id="title" required/>
+      <input type="text" placeholder="Course Code (e.g. CSE-321)" id="course" required/>
+      <input type="text" placeholder="Section (e.g. 03)" id="section" required/>
+      <input type="text" placeholder="Semester (e.g. Spring 2026)" id="semester" required/>
+      <input type="text" placeholder="Student ID" id="sid" required/>
+      <input type="text" placeholder="Student Name" id="sname" required/>
+      <input type="text" placeholder="Faculty Name" id="fname" required/>
+      <button type="submit">Preview Cover</button>
+    </form>
+
+    <div id="previewArea" class="hidden">
+      <div id="coverPage" class="cover-box">
+        <img id="logoPreview" class="logo"/>
+        <h2 id="pTitle"></h2>
+        <table>
+          <tr><td>Course Code</td><td id="pCourse"></td></tr>
+          <tr><td>Section</td><td id="pSection"></td></tr>
+          <tr><td>Semester</td><td id="pSemester"></td></tr>
+          <tr><td>Student ID</td><td id="pSid"></td></tr>
+          <tr><td>Student Name</td><td id="pSname"></td></tr>
+          <tr><td>Faculty</td><td id="pFname"></td></tr>
+        </table>
+        <footer>Daffodil International University</footer>
+      </div>
+      <button id="downloadBtn">Download PDF</button>
     </div>
+  </div>
 
-    <div id="coverPage" class="cover-page">
-        <div class="watermark">
-            <img src="https://daffodilvarsity.edu.bd/images/logo.png" alt="Watermark">
-        </div>
-
-        <div class="border-design">
-            <div class="header">
-                <img src="https://daffodilvarsity.edu.bd/images/logo.png" alt="DIU Logo">
-                <h1>Daffodil International University</h1>
-                <p>Department of Software Engineering</p>
-            </div>
-
-            <div class="main-content">
-                <h2 id="outType">LAB REPORT</h2>
-                <div class="topic-box">
-                    <p>Topic:</p>
-                    <h3 id="outTopic">Enter Topic Name</h3>
-                </div>
-
-                <div class="course-info">
-                    <p>Course Code: <span id="outCC">CSE112</span></p>
-                    <p>Course Title: <span id="outCT">Software Engineering</span></p>
-                </div>
-
-                <div class="info-grid">
-                    <div class="box">
-                        <h4>Submitted By:</h4>
-                        <p>Name: <span id="outName">Sami</span></p>
-                        <p>ID: <span id="outId">123-45-678</span></p>
-                        <p>Section: <span id="outSec">A</span></p>
-                    </div>
-                    <div class="box">
-                        <h4>Submitted To:</h4>
-                        <p><span id="outInsName">Instructor Name</span></p>
-                        <p><span id="outInsDes">Designation</span></p>
-                        <p>Dept. of Software Engineering</p>
-                    </div>
-                </div>
-
-                <div class="date-section">
-                    Date of Submission: <span id="outDate"></span>
-                </div>
-            </div>
-
-            <div class="footer-logo">
-                <p>Daffodil Smart City, Ashulia, Savar, Dhaka</p>
-                <p class="developer-credit">Developed by Emtiaz Hossain Sami | 2026</p>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
