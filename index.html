@@ -2,36 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>DIU Assignment Cover Generator</title>
+  <title>DIU Lab Report Sequence Generator</title>
   <link rel="stylesheet" href="style.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
   <div class="wrapper">
-    <h2>DIU Assignment Cover Page Generator</h2>
+    <h2>DIU Lab Report Sequence Generator</h2>
     <p class="dev-line">Developed by Emtiaz Hossain Sami</p>
 
-    <!-- NO upload input -->
-
     <form id="coverForm">
-      <input type="text" placeholder="Title of Assignment" id="title" required/>
+      <input type="text" placeholder="Title (e.g. Lab Report Submission)" id="title" required/>
+      <input type="text" placeholder="Lab No. (e.g. 01)" id="labNo" required/>
       <input type="text" placeholder="Course Code" id="course" required/>
-      <input type="text" placeholder="Section" id="section" required/>
-      <input type="text" placeholder="Semester" id="semester" required/>
       <input type="text" placeholder="Student ID" id="sid" required/>
       <input type="text" placeholder="Student Name" id="sname" required/>
-      <input type="text" placeholder="Student Department" id="sdept" required/>
       <input type="text" placeholder="Faculty Name" id="fname" required/>
-      <input type="text" placeholder="Faculty Department" id="fdept" required/>
+      <input type="text" placeholder="Department (e.g. SWE)" id="dept" required/>
 
-      <label>Date (MM/YY/DD)</label>
+      <label>Date (MM/DD/YYYY)</label>
       <div class="date-row">
         <input type="text" id="mm" maxlength="2" placeholder="MM"/>
         <span>/</span>
-        <input type="text" id="yy" maxlength="2" placeholder="YY"/>
-        <span>/</span>
         <input type="text" id="dd" maxlength="2" placeholder="DD"/>
+        <span>/</span>
+        <input type="text" id="yyyy" maxlength="4" placeholder="YYYY"/>
       </div>
 
       <button type="submit">Generate Cover</button>
@@ -39,20 +35,24 @@
 
     <div id="previewArea" class="hidden">
       <div id="coverPage" class="cover-box">
-        <!-- AUTO logo -->
-        <img id="logoPreview" class="logo"/>
-        <h2 id="pTitle"></h2>
-        <table>
-          <tr><td>Course Code</td><td id="pCourse"></td></tr>
-          <tr><td>Section</td><td id="pSection"></td></tr>
-          <tr><td>Semester</td><td id="pSemester"></td></tr>
-          <tr><td>Student ID</td><td id="pSid"></td></tr>
-          <tr><td>Student Name</td><td id="pSname"></td></tr>
-          <tr><td>Student Dept.</td><td id="pSdept"></td></tr>
-          <tr><td>Faculty Name</td><td id="pFname"></td></tr>
-          <tr><td>Faculty Dept.</td><td id="pFdept"></td></tr>
-          <tr><td>Submission Date</td><td id="pDate"></td></tr>
-        </table>
+        <!-- AUTO DIU logo -->
+        <img id="logoPrev" class="logo"/>
+        <h1 id="pTitle"></h1>
+        <p class="lab-no">Lab No: <span id="pLabNo"></span></p>
+
+        <div class="submitted-box">
+          <p><strong>Submitted To</strong></p>
+          <p>Department of <span id="pDept"></span></p>
+          <p>Faculty: <span id="pFaculty"></span></p>
+        </div>
+
+        <div class="student-box">
+          <p><strong>Submitted By</strong></p>
+          <p>ID: <span id="pSid"></span></p>
+          <p>Name: <span id="pSname"></span></p>
+          <p>Date: <span id="pDate"></span></p>
+        </div>
+
         <footer>Daffodil International University</footer>
       </div>
       <button id="downloadBtn">Download PDF</button>
