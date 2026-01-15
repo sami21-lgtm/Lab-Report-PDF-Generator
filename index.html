@@ -12,7 +12,7 @@
     <h2>DIU Assignment Cover Page Generator</h2>
     <p class="dev-line">Developed by Emtiaz Hossain Sami</p>
 
-    <!-- NO logo upload anymore -->
+    <!-- NO upload input -->
 
     <form id="coverForm">
       <input type="text" placeholder="Title of Assignment" id="title" required/>
@@ -21,9 +21,9 @@
       <input type="text" placeholder="Semester" id="semester" required/>
       <input type="text" placeholder="Student ID" id="sid" required/>
       <input type="text" placeholder="Student Name" id="sname" required/>
-      <input type="text" placeholder="Student Department (e.g. CSE)" id="sdept" required/>
+      <input type="text" placeholder="Student Department" id="sdept" required/>
       <input type="text" placeholder="Faculty Name" id="fname" required/>
-      <input type="text" placeholder="Faculty Department (e.g. CSE)" id="fdept" required/>
+      <input type="text" placeholder="Faculty Department" id="fdept" required/>
 
       <label>Date (MM/YY/DD)</label>
       <div class="date-row">
@@ -39,7 +39,8 @@
 
     <div id="previewArea" class="hidden">
       <div id="coverPage" class="cover-box">
-        <!-- NO logo img here -->
+        <!-- AUTO logo -->
+        <img id="logoPreview" class="logo"/>
         <h2 id="pTitle"></h2>
         <table>
           <tr><td>Course Code</td><td id="pCourse"></td></tr>
