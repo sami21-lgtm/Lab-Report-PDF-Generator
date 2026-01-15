@@ -1,23 +1,35 @@
-/* Basic reset */
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-body { background: #f2f6ff; display: flex; justify-content: center; padding: 30px; }
-.wrapper { width: 100%; max-width: 700px; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 18px rgba(0,0,0,.1); }
+body { background: #f4f7fa; display: flex; justify-content: center; padding: 30px; }
+.wrapper { width: 100%; max-width: 680px; background: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
 
-h1 { text-align: center; margin-bottom: 5px; color: #002b59; }
-.dev-line{ text-align:center; font-size:13px; color:#666; margin-bottom:20px; }
+h2 { text-align: center; margin-bottom: 4px; color: #002b59; font-size: 22px; }
+.dev-line { text-align: center; font-size: 13px; color: #666; margin-bottom: 20px; }
 
-label { display: block; margin: 15px 0 5px; font-weight: 600; }
+label { display: block; margin: 15px 0 5px; font-weight: 600; font-size: 14px; }
 
-input[type=text]{
+input[type=text] {
   width: 100%;
   padding: 10px;
   margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 14px;
 }
 
-button{
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.date-row input {
+  width: 60px;
+  text-align: center;
+}
+
+button {
   padding: 10px 18px;
   background: #002b59;
   color: #fff;
@@ -26,12 +38,11 @@ button{
   cursor: pointer;
   font-size: 15px;
 }
-button:hover{ background: #00509e; }
+button:hover { background: #00509e; }
 
-/* Preview box (A4 portrait ratio) */
-.cover-box{
-  width: 595px;          /* A4 72 dpi width */
-  height: 842px;         /* A4 72 dpi height */
+.cover-box {
+  width: 595px;
+  height: 842px;
   margin: 25px auto;
   padding: 60px 50px;
   background: #fff;
@@ -40,32 +51,33 @@ button:hover{ background: #00509e; }
   box-shadow: 0 0 10px rgba(0,0,0,.08);
 }
 
-.logo{
+.logo {
   display: block;
   height: 100px;
   margin: 0 auto 30px;
 }
 
-.cover-box h2{
+.cover-box h2 {
   text-align: center;
-  margin-bottom: 45px;
+  margin-bottom: 40px;
   font-size: 22px;
   color: #002b59;
 }
 
-table{
+table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 40px;
 }
 
-td{
+td {
   padding: 10px 8px;
   border-bottom: 1px solid #e4e4e4;
+  font-size: 15px;
 }
-td:first-child{ font-weight: 600; width: 35%; }
+td:first-child { font-weight: 600; width: 35%; }
 
-footer{
+footer {
   position: absolute;
   bottom: 40px;
   left: 0;
@@ -75,4 +87,4 @@ footer{
   color: #555;
 }
 
-.hidden{ display: none; }
+.hidden { display: none; }
