@@ -2,60 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>DIU Lab Report Sequence Generator</title>
+  <title>DIU Lab Report + Cover Split Generator</title>
   <link rel="stylesheet" href="style.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
   <div class="wrapper">
-    <h2>DIU Lab Report Sequence Generator</h2>
+    <h2>DIU Lab Report + Cover Split Generator</h2>
     <p class="dev-line">Developed by Emtiaz Hossain Sami</p>
 
-    <form id="coverForm">
-      <input type="text" placeholder="Title (e.g. Lab Report Submission)" id="title" required/>
-      <input type="text" placeholder="Lab No. (e.g. 01)" id="labNo" required/>
-      <input type="text" placeholder="Course Code" id="course" required/>
-      <input type="text" placeholder="Student ID" id="sid" required/>
-      <input type="text" placeholder="Student Name" id="sname" required/>
-      <input type="text" placeholder="Faculty Name" id="fname" required/>
-      <input type="text" placeholder="Department (e.g. SWE)" id="dept" required/>
+    <!-- COMMON FORM -->
+    <div class="split-container">
+      <div class="left-pane">
+        <h3>Common Data</h3>
+        <input type="text" placeholder="Course Code" id="course" required/>
+        <input type="text" placeholder="Section" id="section" required/>
+        <input type="text" placeholder="Semester" id="semester" required/>
+        <input type="text" placeholder="Student ID" id="sid" required/>
+        <input type="text" placeholder="Student Name" id="sname" required/>
+        <input type="text" placeholder="Student Department" id="sdept" required/>
+        <input type="text" placeholder="Faculty Name" id="fname" required/>
+        <input type="text" placeholder="Faculty Department" id="fdept" required/>
 
-      <label>Date (MM/DD/YYYY)</label>
-      <div class="date-row">
-        <input type="text" id="mm" maxlength="2" placeholder="MM"/>
-        <span>/</span>
-        <input type="text" id="dd" maxlength="2" placeholder="DD"/>
-        <span>/</span>
-        <input type="text" id="yyyy" maxlength="4" placeholder="YYYY"/>
+        <label>Date (MM/YY/DD)</label>
+        <div class="date-row">
+          <input type="text" id="mm" maxlength="2" placeholder="MM"/>
+          <span>/</span>
+          <input type="text" id="yy" maxlength="2" placeholder="YY"/>
+          <span>/</span>
+          <input type="text" id="dd" maxlength="2" placeholder="DD"/>
+        </div>
       </div>
 
-      <button type="submit">Generate Cover</button>
-    </form>
+      <!-- RIGHT PANE (toggle) -->
+      <div class="right-pane">
+        <div class="toggle-bar">
+          <button id="labBtn" class="toggle active">Lab Report</button>
+          <button id="covBtn" class="toggle">Cover Page</button>
+        </div>
 
+        <!-- Lab only -->
+        <div id="labOnly" class="extra-box">
+          <input type="text" placeholder="Lab No." id="labNo" required/>
+          <input type="text" placeholder="Lab Title" id="labTitle" required/>
+        </div>
+
+        <!-- Cover only -->
+        <div id="covOnly" class="extra-box hidden">
+          <input type="text" placeholder="Title of Report" id="covTitle" required/>
+        </div>
+
+        <button id="genBtn" class="gen-btn">Generate Lab Report</button>
+      </div>
+    </div>
+
+    <!-- PREVIEW AREA (reuse) -->
     <div id="previewArea" class="hidden">
-      <div id="coverPage" class="cover-box">
-        <!-- AUTO DIU logo -->
-        <img id="logoPrev" class="logo"/>
-        <h1 id="pTitle"></h1>
-        <p class="lab-no">Lab No: <span id="pLabNo"></span></p>
-
-        <div class="submitted-box">
-          <p><strong>Submitted To</strong></p>
-          <p>Department of <span id="pDept"></span></p>
-          <p>Faculty: <span id="pFaculty"></span></p>
-        </div>
-
-        <div class="student-box">
-          <p><strong>Submitted By</strong></p>
-          <p>ID: <span id="pSid"></span></p>
-          <p>Name: <span id="pSname"></span></p>
-          <p>Date: <span id="pDate"></span></p>
-        </div>
-
-        <footer>Daffodil International University</footer>
-      </div>
+      <div id="outputPage" class="cover-box"></div>
       <button id="downloadBtn">Download PDF</button>
+      <button id="printBtn" class="gen-btn">Print (with shadow logo)</button>
     </div>
   </div>
 
