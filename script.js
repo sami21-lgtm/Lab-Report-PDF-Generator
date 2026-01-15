@@ -1,27 +1,29 @@
-const logoInput  = document.getElementById('logoInput');
-const coverForm  = document.getElementById('coverForm');
-const previewArea= document.getElementById('previewArea');
-const coverPage  = document.getElementById('coverPage');
-const downloadBtn= document.getElementById('downloadBtn');
+const logoInput   = document.getElementById('logoInput');
+const coverForm   = document.getElementById('coverForm');
+const previewArea = document.getElementById('previewArea');
+const coverPage   = document.getElementById('coverPage');
+const downloadBtn = document.getElementById('downloadBtn');
 
-let logoDataURL = ''; // store uploaded logo
+let logoDataURL = '';
 
-/* 1. Logo preview */
-logoInput.addEventListener('change', e=>{
+/* Logo preview */
+logoInput.addEventListener('change', e => {
   const file = e.target.files[0];
-  if(!file) return;
+  if (!file) return;
   const reader = new FileReader();
-  reader.onload = ev=>{
-     logoDataURL = ev.target.result;
-     document.getElementById('logoPreview').src = logoDataURL;
+  reader.onload = ev => {
+    logoDataURL = ev.target.result;
+    const logoPreview = document.getElementById('logoPreview');
+    logoPreview.src = logoDataURL;
+    logoPreview.style.display = 'block';
   };
   reader.readAsDataURL(file);
 });
 
-/* 2. Form submit -> show preview */
-coverForm.addEventListener('submit', e=>{
+/* Form submit -> show preview */
+coverForm.addEventListener('submit', e => {
   e.preventDefault();
-  // fill preview
+
   document.getElementById('pTitle').textContent    = document.getElementById('title').value;
   document.getElementById('pCourse').textContent   = document.getElementById('course').value;
   document.getElementById('pSection').textContent  = document.getElementById('section').value;
@@ -29,19 +31,25 @@ coverForm.addEventListener('submit', e=>{
   document.getElementById('pSid').textContent      = document.getElementById('sid').value;
   document.getElementById('pSname').textContent    = document.getElementById('sname').value;
   document.getElementById('pFname').textContent    = document.getElementById('fname').value;
+  document.getElementById('pFdept').textContent    = document.getElementById('fdept').value;
 
-  if(!logoDataURL) alert("Please upload DIU logo first!");
-  else { previewArea.classList.remove('hidden'); window.scrollTo(0, previewArea.offsetTop); }
+  const mm = document.getElementById('mm').value.padStart(2, '0');
+  const yy = document.getElementById('yy').value.padStart(2, '0');
+  const dd = document.getElementById('dd').value.padStart(2, '0');
+  document.getElementById('pDate').textContent = `${mm}/${yy}/${dd}`;
+
+  previewArea.classList.remove('hidden');
+  window.scrollTo(0, previewArea.offsetTop);
 });
 
-/* 3. Download PDF */
-downloadBtn.addEventListener('click', ()=>{
-  html2canvas(coverPage, { scale: 2, useCORS: true }).then(canvas=>{
-     const imgData = canvas.toDataURL('image/png');
-     const pdf = new jspdf.jsPDF('p','pt','a4');
-     const imgWidth = 595; // A4 width in pt
-     const imgHeight = (canvas.height * imgWidth) / canvas.width;
-     pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-     pdf.save('DIU_CoverPage.pdf');
+/* Download PDF */
+downloadBtn.addEventListener('click', () => {
+  html2canvas(coverPage, { scale: 2, useCORS: true }).then(canvas => {
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jspdf.jsPDF('p', 'pt', 'a4');
+    const imgWidth = 595;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+    pdf.save('DIU_Assignment_Cover.pdf');
   });
 });
