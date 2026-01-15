@@ -5,7 +5,15 @@ body { background: #f4f7fa; display: flex; justify-content: center; padding: 30p
 .wrapper { width: 100%; max-width: 900px; background: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
 
 h2 { text-align: center; margin-bottom: 4px; color: #002b59; font-size: 22px; }
-.dev-line { text-align: center; font-size: 13px; color: #666; margin-bottom: 20px; }
+.dev-line { text-align: center; font-size: 13px; color: #666; margin-bottom: 4px; }
+
+/* নতুন লাইন – webpage এ দেখাবে, print-এ বাদ */
+.dev-sub {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 20px;
+}
 
 .split-container { display: flex; gap: 25px; flex-wrap: wrap; }
 .left-pane, .right-pane { flex: 1 1 400px; }
@@ -78,8 +86,11 @@ footer {
 
 .hidden { display: none; }
 
-/* ---------- শুধু PRINT-এ overlay ---------- */
+/* ---------- শুধু PRINT-এ overlay + dev lines বাদ ---------- */
 @media print {
+  .dev-line,
+  .dev-sub { display: none; }
+
   body::before {
     content: "";
     position: fixed;
