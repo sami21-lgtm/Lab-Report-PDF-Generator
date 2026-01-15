@@ -2,33 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>DIU Cover Page Generator</title>
+  <title>DIU Assignment Cover Generator</title>
   <link rel="stylesheet" href="style.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
   <div class="wrapper">
-    <h1>DIU Cover Page Generator</h1>
-    <p class="dev-line">Developed by Md. Emtiaz Hossain Sami</p>
+    <h2>DIU Assignment Cover Page Generator</h2>
+    <p class="dev-line">Developed by Emtiaz Hossain Sami</p>
 
-    <label>diu.jpg</label>
+    <label>Upload DIU Logo (PNG/JPG/SVG) – Optional</label>
     <input type="file" id="logoInput" accept="image/*"/>
 
     <form id="coverForm">
-      <input type="text" placeholder="Title of Report" id="title" required/>
+      <input type="text" placeholder="Title of Assignment" id="title" required/>
       <input type="text" placeholder="Course Code (e.g. CSE-321)" id="course" required/>
       <input type="text" placeholder="Section (e.g. 03)" id="section" required/>
       <input type="text" placeholder="Semester (e.g. Spring 2026)" id="semester" required/>
       <input type="text" placeholder="Student ID" id="sid" required/>
       <input type="text" placeholder="Student Name" id="sname" required/>
       <input type="text" placeholder="Faculty Name" id="fname" required/>
-      <button type="submit">Preview Cover</button>
+      <input type="text" placeholder="Faculty Department (e.g. CSE)" id="fdept" required/>
+
+      <label>Date (MM/YY/DD)</label>
+      <div class="date-row">
+        <input type="text" id="mm" maxlength="2" placeholder="MM"/>
+        <span>/</span>
+        <input type="text" id="yy" maxlength="2" placeholder="YY"/>
+        <span>/</span>
+        <input type="text" id="dd" maxlength="2" placeholder="DD"/>
+      </div>
+
+      <button type="submit">Generate Cover</button>
     </form>
 
     <div id="previewArea" class="hidden">
       <div id="coverPage" class="cover-box">
-        <img id="logoPreview" class="logo"/>
+        <img id="logoPreview" class="logo" style="display:none"/>
         <h2 id="pTitle"></h2>
         <table>
           <tr><td>Course Code</td><td id="pCourse"></td></tr>
@@ -36,7 +47,9 @@
           <tr><td>Semester</td><td id="pSemester"></td></tr>
           <tr><td>Student ID</td><td id="pSid"></td></tr>
           <tr><td>Student Name</td><td id="pSname"></td></tr>
-          <tr><td>Faculty</td><td id="pFname"></td></tr>
+          <tr><td>Faculty Name</td><td id="pFname"></td></tr>
+          <tr><td>Department</td><td id="pFdept"></td></tr>
+          <tr><td>Submission Date</td><td id="pDate"></td></tr>
         </table>
         <footer>Daffodil International University</footer>
       </div>
