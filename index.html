@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIU Cover Page Generator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -28,13 +28,13 @@
                 <input type="text" placeholder="Faculty Designation" id="fdesignation">
                 <input type="text" placeholder="Faculty Department" id="fdept">
 
-                <label>Submission Date (DD/MM/YYYY)</label>
+                <label>Submission Date</label>
                 <div class="date-row">
                     <input type="text" id="dd" maxlength="2" placeholder="DD">
                     <span>/</span>
                     <input type="text" id="mm" maxlength="2" placeholder="MM">
                     <span>/</span>
-                    <input type="text" id="yy" maxlength="4" placeholder="2026">
+                    <input type="text" id="yy" maxlength="4" value="2026">
                 </div>
             </div>
 
@@ -43,11 +43,11 @@
                     <button type="button" id="labBtn" class="toggle active">Lab Report</button>
                     <button type="button" id="assignBtn" class="toggle">Assignment</button>
                 </div>
-                <div id="labOnly">
+                <div id="labFields">
                     <input type="text" placeholder="Lab No." id="labNo">
                     <input type="text" placeholder="Lab Title" id="labTitle">
                 </div>
-                <div id="assignOnly" style="display: none;">
+                <div id="assignFields" style="display: none;">
                     <input type="text" placeholder="Assignment Title" id="assignTitle">
                     <input type="text" placeholder="Topic Name" id="topicName">
                 </div>
@@ -60,9 +60,13 @@
                 </div>
             <div class="action-btns">
                 <button id="downloadBtn" class="btn-pdf">Download PDF</button>
-                <button id="downloadImgBtn" class="btn-img">Download Image</button>
             </div>
         </div>
+
+        <footer class="developer-credit">
+            Developed by <strong>Emtiaz Hossain Sami</strong><br>
+            Department of Software Engineering, DIU © 2026. All Rights Reserved.
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>
