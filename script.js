@@ -68,9 +68,10 @@ genBtn.onclick = function() {
     }
 
     outputPage.innerHTML = `
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.05; pointer-events: none;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.06; pointer-events: none; z-index: 0;">
             <img src="${LOGO_URL}" style="width: 450px;" crossorigin="anonymous">
         </div>
+
         <div style="position: relative; z-index: 1;">
             <img src="${LOGO_URL}" style="display: block; margin: 0 auto 20px; height: 100px;" crossorigin="anonymous">
             <h1 style="text-align:center; color:#002b59; font-size: 24px; text-transform: uppercase;">${mainHeading}</h1>
@@ -93,9 +94,9 @@ genBtn.onclick = function() {
                     <p style="font-size: 14px; color: #444;">Date: ${d.dd}/${d.mm}/${d.yy}</p>
                 </div>
             </div>
-            <footer style="position:absolute; bottom:20px; width:100%; left:0; text-align:center; border-top: 1px solid #eee; padding-top: 10px;">
-                <p style="font-size: 9px; color: #888; margin:0;">Developed by Emtiaz Hossain Sami, Dept. of SWE, DIU</p>
-                <p style="font-size: 9px; color: #002b59; font-weight: bold; margin-top:2px;">© 2026. All Rights Reserved.</p>
+
+            <footer style="position:absolute; bottom: -280px; width:100%; left:0; text-align:center; border-top: 1px solid #eee; padding-top: 15px;">
+                <p style="font-size: 18px; color: #002b59; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin:0;">Daffodil International University</p>
             </footer>
         </div>`;
 
@@ -103,7 +104,7 @@ genBtn.onclick = function() {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 };
 
-// Download Function
+// Download as PDF Function
 document.getElementById('downloadBtn').onclick = function() {
     html2canvas(outputPage, { scale: 3, useCORS: true }).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
@@ -112,3 +113,9 @@ document.getElementById('downloadBtn').onclick = function() {
         pdf.save('DIU_Report.pdf');
     });
 };
+
+// Download as Image Function (New)
+document.getElementById('downloadImgBtn').onclick = function() {
+    html2canvas(outputPage, { scale: 3, useCORS: true }).then(canvas => {
+        const link = document.createElement('a');
+        link
