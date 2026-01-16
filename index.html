@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIU Lab & Assignment Generator</title>
+    <title>DIU Cover Page Generator</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -24,7 +24,6 @@
                 <input type="text" placeholder="Semester" id="semester">
                 <input type="text" placeholder="Student ID" id="sid">
                 <input type="text" placeholder="Student Name" id="sname">
-                <input type="text" placeholder="Student Department" id="sdept">
                 <input type="text" placeholder="Faculty Name" id="fname">
                 <input type="text" placeholder="Faculty Designation" id="fdesignation">
                 <input type="text" placeholder="Faculty Department" id="fdept">
@@ -35,14 +34,14 @@
                     <span>/</span>
                     <input type="text" id="mm" maxlength="2" placeholder="MM">
                     <span>/</span>
-                    <input type="text" id="yy" maxlength="4" placeholder="YYYY">
+                    <input type="text" id="yy" maxlength="4" placeholder="2026">
                 </div>
             </div>
 
             <div class="right-pane">
                 <div class="toggle-bar">
                     <button type="button" id="labBtn" class="toggle active">Lab Report</button>
-                    <button type="button" id="assignBtn" class="toggle">Assignment Cover</button>
+                    <button type="button" id="assignBtn" class="toggle">Assignment</button>
                 </div>
                 <div id="labOnly">
                     <input type="text" placeholder="Lab No." id="labNo">
@@ -52,7 +51,7 @@
                     <input type="text" placeholder="Assignment Title" id="assignTitle">
                     <input type="text" placeholder="Topic Name" id="topicName">
                 </div>
-                <button type="button" id="genBtn" class="gen-btn">Generate Now</button>
+                <button type="button" id="genBtn" class="gen-btn">Generate Cover Page</button>
             </div>
         </div>
 
