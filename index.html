@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="google-site-verification" content="Btr0RmtAaC37FGSQUOOPqleD_kmyq93G6h8DQI0QS5k" />
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIU Lab & Assignment Generator</title>
@@ -59,9 +59,15 @@
         </div>
 
         <div id="previewArea" style="display: none;">
-            <div id="outputPage" class="cover-box"></div>
+            <div id="outputPage" class="cover-box">
+                <img src="diu.jpg" class="pdf-watermark" alt="DIU Watermark">
+                
+                <div class="pdf-footer-name">Daffodil International University</div>
+            </div>
+            
             <div class="action-btns">
-                <button id="downloadBtn" class="download-btn">Download PDF</button>
+                <button id="downloadBtn" class="download-btn pdf-btn">Download PDF</button>
+                <button id="downloadImgBtn" class="download-btn img-btn">Download Image</button>
             </div>
         </div>
 
