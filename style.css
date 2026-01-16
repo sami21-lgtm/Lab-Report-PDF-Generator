@@ -1,89 +1,38 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background: #f0f2f5; display: flex; justify-content: center; padding: 40px 20px; }
 .wrapper { width: 100%; max-width: 900px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-
 .logo-container { text-align: center; margin-bottom: 30px; }
-.header-logo { height: 60px; width: auto; margin-bottom: 10px; }
-.main-title { color: #002b59; font-size: 22px; font-weight: 700; text-transform: uppercase; }
+.header-logo { height: 70px; margin-bottom: 10px; }
+.main-title { color: #002b59; font-size: 22px; text-transform: uppercase; }
 
 .split-container { display: flex; gap: 30px; flex-wrap: wrap; }
 .left-pane, .right-pane { flex: 1 1 350px; }
-h3 { margin-bottom: 15px; color: #333; font-size: 18px; border-bottom: 2px solid #002b59; display: inline-block; }
+input[type=text] { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; }
 
-input[type=text] { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
-.date-row { display: flex; align-items: center; gap: 8px; margin-bottom: 15px; }
-.date-row input { width: 60px; text-align: center; margin-bottom: 0; }
-label { font-size: 13px; font-weight: 600; color: #555; display: block; margin-bottom: 5px; }
+.date-row { display: flex; align-items: center; gap: 8px; }
+.date-row input { width: 70px; text-align: center; }
 
 .toggle-bar { display: flex; gap: 10px; margin-bottom: 20px; }
-.toggle { flex: 1; padding: 12px; border: 1px solid #002b59; background: #fff; color: #002b59; cursor: pointer; border-radius: 6px; font-weight: 600; }
+.toggle { flex: 1; padding: 12px; border: 1px solid #002b59; background: #fff; cursor: pointer; border-radius: 6px; }
 .toggle.active { background: #002b59; color: #fff; }
 
-.gen-btn { width: 100%; padding: 15px; background: #002b59; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }
+.gen-btn { width: 100%; padding: 15px; background: #002b59; color: #fff; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
 
-/* --- Cover Box (PDF Area) Updates --- */
+/* Cover Page Style */
 .cover-box { 
     position: relative; 
     padding: 60px; 
-    border: 1px solid #eee; 
     margin: 30px auto; 
     background: #fff; 
-    width: 595px; /* A4 width */
-    min-height: 841px; /* A4 height */
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    overflow: hidden; 
+    width: 595px; 
+    height: 841px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    border: 1px solid #eee;
+    overflow: hidden;
 }
 
-/* Watermark Logo */
-.pdf-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    opacity: 0.08; /* Very light */
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* Bottom University Name */
-.pdf-footer-name {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: #002b59;
-    text-transform: uppercase;
-}
-
-/* Action Buttons (Parallel Layout) */
-.action-btns { 
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px; 
-}
-
-.btn-pdf, .btn-img {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #fff;
-    transition: 0.3s;
-}
-
-.btn-pdf { background: #d93025; } /* Red for PDF */
-.btn-img { background: #28a745; } /* Green for Image */
-
-.btn-pdf:hover { background: #b22218; }
-.btn-img:hover { background: #218838; }
-
-/* Footer Credit */
-.footer-dev { margin-top: 50px; text-align: center; padding-top: 15px; border-top: 1px solid #eee; }
-.footer-dev p { font-size: 10px; color: #888; margin: 2px 0; }
-.copyright-line { font-weight: bold; color: #002b59 !important; font-size: 10px !important; }
+.action-btns { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+.btn-pdf { background: #e74c3c; color: white; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+.btn-img { background: #27ae60; color: white; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
