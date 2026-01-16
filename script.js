@@ -71,26 +71,27 @@ window.onload = function() {
                 </div>`;
 
             // ৩. সাবমিশন সেকশন (উভয় পাশে প্রতিষ্ঠান ফিক্সড)
-            let submissionInfo = `
-                <div style="position: relative; z-index: 1; display: flex; justify-content: space-between; margin-top: auto; padding-top: 40px; font-family: 'Times New Roman', serif; width: 90%; margin-left: auto; margin-right: auto;">
-                    <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px; text-align: left;">
-                        <p style="font-size: 13px; font-weight: bold; color: #666; margin: 0 0 5px 0;">SUBMITTED TO</p>
-                        <p style="font-size: 18px; font-weight: bold; margin: 0;">${d.fname}</p>
-                        <p style="font-size: 15px; margin: 4px 0;">${d.fdes}</p>
-                        <p style="font-size: 14px; margin: 0;">${d.fdept}</p>
-                        <p style="font-size: 14px; font-weight: bold; margin: 4px 0; color: #003366;">Daffodil International University</p>
-                    </div>
-                    <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px; text-align: left; margin-left: 40px;">
-                        <p style="font-size: 13px; font-weight: bold; color: #666; margin: 0 0 5px 0;">SUBMITTED BY</p>
-                        <p style="font-size: 18px; font-weight: bold; margin: 0;">${d.sname}</p>
-                        <p style="font-size: 15px; margin: 4px 0;">ID: <b>${d.sid}</b></p>
-                        <p style="font-size: 14px; margin: 0;">Dept: ${d.sdept}</p>
-                        <p style="font-size: 14px; margin: 4px 0;">Batch: ${d.sec}</p>
-                        <p style="font-size: 14px; font-weight: bold; margin: 4px 0; color: #003366;">Daffodil International University</p>
-                        <p style="font-size: 13px; margin-top: 5px;">Date: ${d.date}</p>
-                    </div>
-                </div>`;
-
+           // SUBMITTED BY সেকশনে Name লেবেল যোগ করা হয়েছে
+let submissionInfo = `
+    <div style="position: relative; z-index: 1; display: flex; justify-content: space-between; margin-top: auto; padding-top: 40px; font-family: 'Times New Roman', serif; width: 90%; margin-left: auto; margin-right: auto;">
+        <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px; text-align: left;">
+            <p style="font-size: 13px; font-weight: bold; color: #666; margin: 0 0 5px 0; letter-spacing: 1px;">SUBMITTED TO</p>
+            <p style="font-size: 18px; font-weight: bold; margin: 0; color: #000;">${d.fname}</p>
+            <p style="font-size: 15px; margin: 4px 0;">${d.fdes}</p>
+            <p style="font-size: 14px; margin: 0;">${d.fdept}</p>
+            <p style="font-size: 14px; font-weight: bold; margin: 4px 0; color: #003366;">Daffodil International University</p>
+        </div>
+        
+        <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px; text-align: left; margin-left: 40px;">
+            <p style="font-size: 13px; font-weight: bold; color: #666; margin: 0 0 5px 0; letter-spacing: 1px;">SUBMITTED BY</p>
+            <p style="font-size: 17px; margin: 0; color: #000;">Name: <b>${d.sname}</b></p> <p style="font-size: 15px; margin: 4px 0;">ID: <b>${d.sid}</b></p>
+            <p style="font-size: 14px; margin: 0;">Dept: ${d.sdept}</p>
+            <p style="font-size: 14px; margin: 4px 0;">Batch: ${d.sec}</p>
+            <p style="font-size: 14px; font-weight: bold; margin: 4px 0; color: #003366;">Daffodil International University</p>
+            <p style="font-size: 13px; margin-top: 5px;">Date: ${d.date}</p>
+        </div>
+    </div>`;
+            
             let bodyHTML = currentMode === 'assign' ? 
                 `<div style="position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; font-family: 'Times New Roman', serif; width: 85%; margin: 0 auto; text-align: left;">
                     <div style="line-height: 4.5; font-size: 21px;">
