@@ -77,25 +77,23 @@ window.onload = function() {
                     <p><strong>Semester:</strong> ${d.sem}</p>
                     <p>${titleInfo}</p>
                 </div>
-                <div style="display: flex; flex-direction: column; gap: 40px; flex-grow: 1;">
-                    <div style="padding-left: 20px; border-left: 5px solid #002b59;">
-                        <p style="font-size: 11px; color: #666;">SUBMITTED TO</p>
-                        <p style="font-size: 18px; font-weight: bold; margin: 3px 0;">${d.fname}</p>
-                        <p style="font-size: 14px;">${d.fdes}</p>
-                        <p style="font-size: 14px;">Department of ${d.fdept}</p>
-                    </div>
-                    <div style="padding-left: 20px; border-left: 5px solid #002b59;">
-                        <p style="font-size: 11px; color: #666;">SUBMITTED BY</p>
-                        <p style="font-size: 18px; font-weight: bold; margin: 3px 0;">${d.sname}</p>
-                        <p style="font-size: 15px;"><strong>ID:</strong> ${d.sid}</p>
-                        <p style="font-size: 15px;"><strong>Section:</strong> ${d.sec}</p>
-                        <p style="font-size: 15px;"><strong>Date:</strong> ${d.date}</p>
-                    </div>
-                </div>
-                <div style="text-align: center; border-top: 1px solid #ddd; padding-top: 15px; margin-top: auto;">
-                    <p style="font-size: 14px; color: #002b59; font-weight: bold; letter-spacing: 2px;">DAFFODIL INTERNATIONAL UNIVERSITY</p>
-                </div>
-            </div>`;
+                // এই অংশটি outputPage.innerHTML এর ভেতরে আপডেট করুন
+<div style="display: flex; flex-direction: column; gap: 60px; flex-grow: 1; text-align: left; margin-top: 20px;">
+    <div style="padding-left: 20px; border-left: 5px solid #002b59;">
+        <p style="font-size: 13px; color: #666; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px;">SUBMITTED TO</p>
+        <p style="font-size: 22px; font-weight: bold; margin: 5px 0; color: #000;">${d.fname}</p>
+        <p style="font-size: 16px; margin: 2px 0;">${d.fdes}</p>
+        <p style="font-size: 16px; margin: 2px 0;">Department of ${d.fdept}</p>
+    </div>
+
+    <div style="padding-left: 20px; border-left: 5px solid #002b59;">
+        <p style="font-size: 13px; color: #666; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px;">SUBMITTED BY</p>
+        <p style="font-size: 22px; font-weight: bold; margin: 5px 0; color: #000;">${d.sname}</p>
+        <p style="font-size: 17px; margin: 3px 0;"><strong>ID:</strong> ${d.sid}</p>
+        <p style="font-size: 17px; margin: 3px 0;"><strong>Section:</strong> ${d.sec}</p>
+        <p style="font-size: 17px; margin: 3px 0;"><strong>Date:</strong> ${d.date}</p>
+    </div>
+</div>
 
         previewArea.style.display = 'block';
         window.scrollTo({ top: outputPage.offsetTop, behavior: 'smooth' });
