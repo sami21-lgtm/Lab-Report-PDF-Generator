@@ -36,11 +36,15 @@ input[type="text"]:focus { border-color: #002b59; outline: none; box-shadow: 0 0
     text-align: center;
     margin-top: 40px;
     padding-top: 20px;
-    border-top: 1px solid #eee;
-    color: #95a5a6; /* Light gray */
-    font-size: 10px; /* Small font */
-    letter-spacing: 0.5px;
-    line-height: 1.6;
+    color: #bdc3c7; /* একদম হালকা রঙ */
+    font-size: 9px; /* ফন্ট সাইজ আরও ছোট করা হয়েছে */
+    letter-spacing: 0.8px;
+    border-top: 1px solid #f9f9f9;
+}
+
+.main-footer strong {
+    color: #95a5a6;
+    font-weight: 600;
 }
 .main-footer strong { color: #7f8c8d; font-weight: 600; }
 
