@@ -35,6 +35,7 @@ window.onload = function() {
                 sem: document.getElementById('semester')?.value || '',
                 sid: document.getElementById('sid')?.value || '',
                 sname: document.getElementById('sname')?.value || '',
+                // Student Department information
                 sdept: document.getElementById('sdepartment')?.value || '', 
                 fname: document.getElementById('fname')?.value || '',
                 fdes: document.getElementById('fdesignation')?.value || '',
@@ -42,11 +43,12 @@ window.onload = function() {
                 date: (document.getElementById('dd')?.value || '00') + '/' + (document.getElementById('mm')?.value || '00') + '/2026',
                 lNo: document.getElementById('labNo')?.value || '',
                 lTitle: document.getElementById('labTitle')?.value || '',
+                // Changed from Title to Assignment No
                 aNo: document.getElementById('assignNo')?.value || '', 
                 topic: document.getElementById('topicName')?.value || ''
             };
 
-            // Lab Report এর বক্স আপনি যেমন চেয়েছিলেন তেমনই আছে
+            // Marking Table for Lab Report - No changes made
             let markingTable = `
                 <div style="border: 1.5px solid #000; margin: 0 auto 20px auto; width: 95%; font-family: Arial, sans-serif;">
                     <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 5px; font-weight: bold; background: #f0f0f0; font-size: 13px;">Only for course Teacher</div>
@@ -61,7 +63,7 @@ window.onload = function() {
                     </table>
                 </div>`;
 
-            // Submitted To/By সেকশন (ডিপার্টমেন্ট অপশনসহ)
+            // Stylish Submission Section with user-defined department
             let submissionInfo = `
                 <div style="display: flex; justify-content: space-between; margin-top: auto; padding-top: 50px; font-family: 'Times New Roman', serif; width: 90%; margin-left: auto; margin-right: auto; padding-bottom: 20px;">
                     <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px; text-align: left;">
@@ -123,14 +125,14 @@ window.onload = function() {
                     const imgData = canvas.toDataURL('image/png');
                     const pdf = new jsPDF('p', 'mm', 'a4');
                     pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
-                    pdf.save("DIU-Cover-Page.pdf");
+                    pdf.save("Cover-Page.pdf");
                 });
             };
 
             document.getElementById('downloadIMG').onclick = function() {
                 html2canvas(document.querySelector("#captureArea"), { scale: 3 }).then(canvas => {
                     const link = document.createElement('a');
-                    link.download = 'DIU-Cover-Page.png';
+                    link.download = 'Cover-Page.png';
                     link.href = canvas.toDataURL();
                     link.click();
                 });
