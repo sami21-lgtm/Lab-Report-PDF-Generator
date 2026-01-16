@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIU Lab + Cover Page</title>
+    <title>DIU Lab & Assignment Generator</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -12,14 +12,14 @@
     <div class="wrapper">
         <div class="logo-container">
             <img src="diu.jpg" alt="DIU Logo" class="header-logo" id="mainLogo">
-            <h2 class="main-title">DIU Lab Report & Cover Page Generator</h2>
+            <h2 class="main-title">DIU Lab Report & Assignment Generator</h2>
         </div>
 
         <div class="split-container">
             <div class="left-pane">
                 <h3>Common Data</h3>
-                <input type="text" placeholder="Course Code" id="course" required>
-                <input type="text" placeholder="Section" id="section" required>
+                <input type="text" placeholder="Course Code" id="courseCode" required>
+                <input type="text" placeholder="Course Title" id="courseTitle" required> <input type="text" placeholder="Section" id="section" required>
                 <input type="text" placeholder="Semester" id="semester" required>
                 <input type="text" placeholder="Student ID" id="sid" required>
                 <input type="text" placeholder="Student Name" id="sname" required>
@@ -40,16 +40,16 @@
             <div class="right-pane">
                 <div class="toggle-bar">
                     <button id="labBtn" class="toggle active">Lab Report</button>
-                    <button id="covBtn" class="toggle">Cover Page</button>
-                </div>
+                    <button id="assignBtn" class="toggle">Assignment Cover</button> </div>
 
                 <div id="labOnly" class="extra-box">
                     <input type="text" placeholder="Lab No." id="labNo">
                     <input type="text" placeholder="Lab Title" id="labTitle">
                 </div>
 
-                <div id="covOnly" class="extra-box hidden">
-                    <input type="text" placeholder="Title of Report" id="covTitle">
+                <div id="assignOnly" class="extra-box hidden">
+                    <input type="text" placeholder="Assignment Title" id="assignTitle">
+                    <input type="text" placeholder="Topic Name" id="topicName">
                 </div>
 
                 <button id="genBtn" class="gen-btn">Generate Now</button>
