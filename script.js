@@ -46,7 +46,7 @@ window.onload = function() {
                 topic: document.getElementById('topicName')?.value || ''
             };
 
-            // Lab Report Marking Table - No changes made
+            // Lab Report Marking Table
             let markingTable = `
                 <div style="border: 1.5px solid #000; margin: 0 auto 20px auto; width: 95%; font-family: Arial, sans-serif;">
                     <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 5px; font-weight: bold; background: #f0f0f0; font-size: 13px;">Only for course Teacher</div>
@@ -61,7 +61,7 @@ window.onload = function() {
                     </table>
                 </div>`;
 
-            // Submission Info with University Name fixed on both sides
+            // Submission Info with BOTH SIDES FIXED UNIVERSITY
             let submissionInfo = `
                 <div style="display: flex; justify-content: space-between; margin-top: auto; padding-top: 50px; font-family: 'Times New Roman', serif; width: 90%; margin-left: auto; margin-right: auto; padding-bottom: 20px;">
                     <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px; text-align: left;">
@@ -125,14 +125,14 @@ window.onload = function() {
                     const imgData = canvas.toDataURL('image/png');
                     const pdf = new jsPDF('p', 'mm', 'a4');
                     pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
-                    pdf.save("Cover-Page.pdf");
+                    pdf.save("DIU-Cover-Page.pdf");
                 });
             };
 
             document.getElementById('downloadIMG').onclick = function() {
                 html2canvas(document.querySelector("#captureArea"), { scale: 3 }).then(canvas => {
                     const link = document.createElement('a');
-                    link.download = 'Cover-Page.png';
+                    link.download = 'DIU-Cover-Page.png';
                     link.href = canvas.toDataURL();
                     link.click();
                 });
