@@ -48,7 +48,7 @@ window.onload = function() {
             topic: document.getElementById('topicName')?.value || ''
         };
 
-        // ল্যাব রিপোর্টের জন্য আগের সেই পারফেক্ট টেবিল (উপরে থাকবে)
+        // ল্যাব রিপোর্টের টেবিল (আপনার আগের পছন্দমতো অপরিবর্তিত)
         let markingTable = `
             <div style="margin: 10px 0 20px 0; border: 1.5px solid #000; width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
                 <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 4px; font-weight: bold; font-size: 14px; background: #f9f9f9;">Only for course Teacher</div>
@@ -64,42 +64,42 @@ window.onload = function() {
                 </table>
             </div>`;
 
-        // অ্যাসাইনমেন্টের জন্য Creative Watermark
-        let watermark = currentMode === 'assign' ? `<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.1; z-index: 0; pointer-events: none;"><img src="${LOCAL_LOGO}" style="width: 480px;"></div>` : "";
+        // অ্যাসাইনমেন্টের জন্য বড় করে ওয়াটারমার্ক
+        let watermark = currentMode === 'assign' ? `<div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); opacity: 0.08; z-index: 0; pointer-events: none;"><img src="${LOCAL_LOGO}" style="width: 500px;"></div>` : "";
 
         // বডি কন্টেন্ট জেনারেশন
         let bodyContent = "";
         if (currentMode === 'assign') {
-            // অ্যাসাইনমেন্টের জন্য Stylish & Creative Layout
+            // অ্যাসাইনমেন্টের জন্য আপনার স্ক্রিনশটের মতো Stylish & Spaced Layout
             bodyContent = `
-                <div style="font-family: 'Segoe UI', Tahoma, sans-serif; color: #000; margin-top: 10px;">
-                    <div style="line-height: 2.3; margin-bottom: 30px;">
-                        <p style="font-size: 17px; margin: 0;"><strong>Course Code:</strong> ${d.code}</p>
-                        <p style="font-size: 17px; margin: 0;"><strong>Course Name:</strong> ${d.title}</p>
-                        <p style="font-size: 17px; margin: 0;"><strong>Semester:</strong> ${d.sem}</p>
-                        <p style="font-size: 17px; margin: 15px 0 5px 0;"><strong>Assignment Title:</strong></p>
-                        <p style="font-size: 20px; font-weight: bold; color: #003366; border-bottom: 2px solid #003366; display: inline-block; margin: 0;">${d.aTitle}</p>
-                        <p style="font-size: 17px; margin: 10px 0 0 0;"><strong>Topic Name:</strong> ${d.topic}</p>
+                <div style="font-family: 'Times New Roman', Times, serif; color: #000; margin-top: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div style="line-height: 2.8; margin-bottom: 20px;">
+                        <p style="font-size: 19px; margin: 0;"><strong>Course Code:</strong> ${d.code}</p>
+                        <p style="font-size: 19px; margin: 0;"><strong>Course Name:</strong> ${d.title}</p>
+                        <p style="font-size: 19px; margin: 0;"><strong>Semester:</strong> ${d.sem}</p>
+                        <p style="font-size: 19px; margin: 20px 0 5px 0;"><strong>Assignment Title:</strong> <span style="font-weight: bold; color: #003366;">${d.aTitle}</span></p>
+                        <p style="font-size: 19px; margin: 0;"><strong>Topic Name:</strong> ${d.topic}</p>
                     </div>
 
-                    <div style="display: flex; justify-content: space-between; margin-top: 40px; gap: 20px;">
-                        <div style="width: 48%; border-left: 5px solid #003366; padding-left: 15px; background: #fcfcfc; padding-top: 10px; padding-bottom: 10px;">
-                            <p style="font-size: 13px; font-weight: bold; color: #555; text-transform: uppercase; margin-bottom: 8px;">SUBMITTED TO</p>
-                            <p style="font-size: 18px; font-weight: bold; margin: 0;">${d.fname}</p>
-                            <p style="font-size: 15px; margin: 2px 0;">${d.fdes}</p>
-                            <p style="font-size: 14px; margin: 0; color: #333;">Daffodil International University</p>
+                    <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 30px;">
+                        <div style="border-left: 6px solid #003366; padding-left: 20px;">
+                            <p style="font-size: 13px; font-weight: bold; color: #555; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 2px;">SUBMITTED TO</p>
+                            <p style="font-size: 22px; font-weight: bold; margin: 0;">${d.fname}</p>
+                            <p style="font-size: 17px; margin: 3px 0;">${d.fdes}</p>
+                            <p style="font-size: 16px; margin: 0; color: #333;">Daffodil International University</p>
                         </div>
-                        <div style="width: 48%; border-left: 5px solid #003366; padding-left: 15px; background: #fcfcfc; padding-top: 10px; padding-bottom: 10px;">
-                            <p style="font-size: 13px; font-weight: bold; color: #555; text-transform: uppercase; margin-bottom: 8px;">SUBMITTED BY</p>
-                            <p style="font-size: 18px; font-weight: bold; margin: 0;">${d.sname}</p>
-                            <p style="font-size: 15px; margin: 2px 0;">ID: <b>${d.sid}</b></p>
-                            <p style="font-size: 15px; margin: 2px 0;">Section: <b>${d.sec}</b></p>
-                            <p style="font-size: 14px; margin: 5px 0;">Date: ${d.date}</p>
+                        
+                        <div style="border-left: 6px solid #003366; padding-left: 20px;">
+                            <p style="font-size: 13px; font-weight: bold; color: #555; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 2px;">SUBMITTED BY</p>
+                            <p style="font-size: 22px; font-weight: bold; margin: 0;">${d.sname}</p>
+                            <p style="font-size: 18px; margin: 3px 0;">ID: <b>${d.sid}</b></p>
+                            <p style="font-size: 18px; margin: 3px 0;">Section: <b>${d.sec}</b></p>
+                            <p style="font-size: 17px; margin: 5px 0;">Date: ${d.date}</p>
                         </div>
                     </div>
                 </div>`;
         } else {
-            // ল্যাব রিপোর্টের জন্য আপনার পছন্দের সেই 'purba' ফরম্যাট
+            // ল্যাব রিপোর্টের সেই চিরচেনা 'purba' ফরম্যাট
             bodyContent = `
                 <div style="font-size: 17px; line-height: 2.3; margin-top: 15px; font-weight: bold; font-family: 'Times New Roman', serif;">
                     <p>Semester: ${d.sem}</p>
@@ -116,20 +116,20 @@ window.onload = function() {
 
         outputPage.innerHTML = `
             ${watermark}
-            <div style="position: relative; z-index: 1; height: 100%; border: ${currentMode === 'assign' ? '5px double #003366' : '1.5px solid #000'}; margin: 20px; padding: 45px; display: flex; flex-direction: column; text-align: left; background: #fff;">
+            <div style="position: relative; z-index: 1; height: 100%; border: ${currentMode === 'assign' ? '12px double #003366' : '1.5px solid #000'}; margin: 15px; padding: 50px; display: flex; flex-direction: column; text-align: left; background: #fff;">
                 
-                <div style="text-align: center; margin-bottom: 10px;">
-                    <img src="${LOCAL_LOGO}" style="height: 70px;">
-                    <h1 style="font-size: 22px; margin: 10px 0 5px 0; color: #003366; font-family: 'Arial Black', sans-serif;">DAFFODIL INTERNATIONAL UNIVERSITY</h1>
-                    <div style="width: 50%; height: 2px; background: #003366; margin: 5px auto 10px auto;"></div>
-                    <h2 style="font-size: 18px; font-weight: bold; text-transform: uppercase;">${currentMode === 'lab' ? 'Lab Report Submission' : 'Assignment Submission'}</h2>
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <img src="${LOCAL_LOGO}" style="height: 80px;">
+                    <h1 style="font-size: 24px; margin: 15px 0 5px 0; color: #003366; font-family: 'Arial Black', sans-serif;">DAFFODIL INTERNATIONAL UNIVERSITY</h1>
+                    <div style="width: 60%; height: 3px; background: #003366; margin: 8px auto 12px auto;"></div>
+                    <h2 style="font-size: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px;">${currentMode === 'lab' ? 'Lab Report Submission' : 'ASSIGNMENT SUBMISSION'}</h2>
                 </div>
 
                 ${currentMode === 'lab' ? markingTable : ''}
                 ${bodyContent}
 
-                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
-                    <p style="font-size: 12px; color: #666; letter-spacing: 1.5px; font-family: sans-serif;">www.daffodilvarsity.edu.bd</p>
+                <div style="text-align: center; margin-top: auto; padding-top: 25px;">
+                    <p style="font-size: 13px; color: #666; letter-spacing: 2px; font-family: sans-serif;">www.daffodilvarsity.edu.bd</p>
                 </div>
             </div>`;
 
