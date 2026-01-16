@@ -21,10 +21,69 @@ label { font-size: 13px; font-weight: 600; color: #555; display: block; margin-b
 
 .gen-btn { width: 100%; padding: 15px; background: #002b59; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }
 
-.cover-box { position: relative; padding: 60px; border: 1px solid #eee; margin: 30px auto; background: #fff; width: 595px; min-height: 841px; }
-.action-btns { text-align: center; margin-top: 20px; }
-.download-btn { background: #28a745; color: #fff; padding: 12px 30px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+/* --- Cover Box (PDF Area) Updates --- */
+.cover-box { 
+    position: relative; 
+    padding: 60px; 
+    border: 1px solid #eee; 
+    margin: 30px auto; 
+    background: #fff; 
+    width: 595px; /* A4 width */
+    min-height: 841px; /* A4 height */
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    overflow: hidden; 
+}
 
+/* Watermark Logo */
+.pdf-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    opacity: 0.08; /* Very light */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Bottom University Name */
+.pdf-footer-name {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #002b59;
+    text-transform: uppercase;
+}
+
+/* Action Buttons (Parallel Layout) */
+.action-btns { 
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px; 
+}
+
+.btn-pdf, .btn-img {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.btn-pdf { background: #d93025; } /* Red for PDF */
+.btn-img { background: #28a745; } /* Green for Image */
+
+.btn-pdf:hover { background: #b22218; }
+.btn-img:hover { background: #218838; }
+
+/* Footer Credit */
 .footer-dev { margin-top: 50px; text-align: center; padding-top: 15px; border-top: 1px solid #eee; }
 .footer-dev p { font-size: 10px; color: #888; margin: 2px 0; }
 .copyright-line { font-weight: bold; color: #002b59 !important; font-size: 10px !important; }
