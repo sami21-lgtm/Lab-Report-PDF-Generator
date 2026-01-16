@@ -19,9 +19,22 @@ input[type=text] { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px 
 
 .gen-btn { width: 100%; padding: 15px; background: #002b59; color: #fff; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 10px; }
 
-/* Developed by style - Middle & Small */
-.main-footer { text-align: center; margin-top: 40px; color: #95a5a6; font-size: 10px; letter-spacing: 0.5px; border-top: 1px solid #eee; padding-top: 15px; }
-.main-footer strong { color: #7f8c8d; }
+/* Developed by style - Bright & Clear */
+.main-footer { 
+    text-align: center; 
+    margin-top: 40px; 
+    color: #5d6d7e; /* আগে ছিল হালকা ধূসর, এখন উজ্জ্বল নীলচে ধূসর */
+    font-size: 11px; /* ফন্ট সামান্য বড় করা হয়েছে স্পষ্ট দেখার জন্য */
+    letter-spacing: 0.8px; 
+    border-top: 1px solid #ddd; /* ডিভাইডার লাইনটিও একটু স্পষ্ট করা হয়েছে */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.main-footer strong { 
+    color: #2c3e50; /* আপনার নাম এখন গাঢ় এবং উজ্জ্বল দেখাবে */
+    font-weight: 700; 
+}
 
 .cover-box { position: relative; width: 210mm; height: 297mm; background: #fff; margin: 30px auto; border: 1px solid #ddd; }
 .action-btns { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; }
