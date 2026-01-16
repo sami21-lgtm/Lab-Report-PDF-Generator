@@ -35,19 +35,18 @@ window.onload = function() {
                 sem: document.getElementById('semester')?.value || '',
                 sid: document.getElementById('sid')?.value || '',
                 sname: document.getElementById('sname')?.value || '',
+                sdept: document.getElementById('sdepartment')?.value || '', 
                 fname: document.getElementById('fname')?.value || '',
                 fdes: document.getElementById('fdesignation')?.value || '',
-                // User ekhon nizer icchemoto teacher ebong student department likhte parbe
-                fdept: document.getElementById('fdepartment')?.value || '', 
-                sdept: document.getElementById('sdepartment')?.value || '',
+                fdept: document.getElementById('fdepartment')?.value || '',
                 date: (document.getElementById('dd')?.value || '00') + '/' + (document.getElementById('mm')?.value || '00') + '/2026',
                 lNo: document.getElementById('labNo')?.value || '',
                 lTitle: document.getElementById('labTitle')?.value || '',
-                aTitle: document.getElementById('assignTitle')?.value || '',
+                aNo: document.getElementById('assignNo')?.value || '', 
                 topic: document.getElementById('topicName')?.value || ''
             };
 
-            // Lab Report-er box size boro (95%) kora hoyeche
+            // Lab Report এর বক্স আপনি যেমন চেয়েছিলেন তেমনই আছে
             let markingTable = `
                 <div style="border: 1.5px solid #000; margin: 0 auto 20px auto; width: 95%; font-family: Arial, sans-serif;">
                     <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 5px; font-weight: bold; background: #f0f0f0; font-size: 13px;">Only for course Teacher</div>
@@ -62,7 +61,7 @@ window.onload = function() {
                     </table>
                 </div>`;
 
-            // Stylish Submitted To/By section jekhane user department likhte parbe
+            // Submitted To/By সেকশন (ডিপার্টমেন্ট অপশনসহ)
             let submissionInfo = `
                 <div style="display: flex; justify-content: space-between; margin-top: auto; padding-top: 50px; font-family: 'Times New Roman', serif; width: 90%; margin-left: auto; margin-right: auto; padding-bottom: 20px;">
                     <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px; text-align: left;">
@@ -75,8 +74,8 @@ window.onload = function() {
                         <p style="font-size: 13px; font-weight: bold; color: #666; margin: 0 0 8px 0; letter-spacing: 1px;">SUBMITTED BY</p>
                         <p style="font-size: 20px; font-weight: bold; margin: 0; color: #000;">${d.sname}</p>
                         <p style="font-size: 16px; margin: 4px 0;">ID: <b>${d.sid}</b></p>
-                        <p style="font-size: 15px; margin: 0;">Batch: ${d.sec}</p>
-                        <p style="font-size: 14px; margin: 4px 0;">${d.sdept}</p>
+                        <p style="font-size: 15px; margin: 0;">Department: ${d.sdept}</p>
+                        <p style="font-size: 14px; margin: 4px 0;">Batch: ${d.sec}</p>
                         <p style="font-size: 13px; margin: 4px 0 0 0;">Date: ${d.date}</p>
                     </div>
                 </div>`;
@@ -87,7 +86,7 @@ window.onload = function() {
                         <p><strong>Course Code:</strong> ${d.code}</p>
                         <p><strong>Course Name:</strong> ${d.title}</p>
                         <p><strong>Semester:</strong> ${d.sem}</p>
-                        <p><strong>Assignment Title:</strong> <span style="color:#003366;">${d.aTitle}</span></p>
+                        <p><strong>Assignment No:</strong> <span style="color:#003366;">${d.aNo}</span></p>
                         <p><strong>Topic Name:</strong> ${d.topic}</p>
                     </div>
                 </div>` :
