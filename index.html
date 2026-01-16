@@ -6,7 +6,7 @@
     <title>DIU Cover Page Generator</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -24,11 +24,13 @@
                 <input type="text" placeholder="Semester" id="semester">
                 <input type="text" placeholder="Student ID" id="sid">
                 <input type="text" placeholder="Student Name" id="sname">
+                <input type="text" placeholder="Student Department" id="sdepartment"> 
+                
                 <input type="text" placeholder="Faculty Name" id="fname">
                 <input type="text" placeholder="Faculty Designation" id="fdesignation">
-                <input type="text" placeholder="Faculty Department" id="fdept">
+                <input type="text" placeholder="Faculty Department" id="fdepartment">
 
-                <label>Submission Date</label>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px;">Submission Date</label>
                 <div class="date-row">
                     <input type="text" id="dd" placeholder="DD" maxlength="2">
                     <input type="text" id="mm" placeholder="MM" maxlength="2">
@@ -48,7 +50,7 @@
                 </div>
                 
                 <div id="assignOnly" style="display: none;">
-                    <input type="text" placeholder="Assignment Title" id="assignTitle">
+                    <input type="text" placeholder="Assignment No. (e.g. 01)" id="assignNo">
                     <input type="text" placeholder="Topic Name" id="topicName">
                 </div>
                 
@@ -57,11 +59,9 @@
         </div>
 
         <div id="previewArea" style="display: none;">
-            <div id="outputPage" class="cover-box"></div>
-            <div class="action-btns">
-                <button id="downloadBtn" class="btn-pdf">Download PDF</button>
-                <button id="downloadImgBtn" class="btn-img">Download Image</button>
-            </div>
+            <div id="outputPage"></div>
+            <div class="action-btns" id="actionButtons" style="text-align: center; margin-top: 20px;">
+                </div>
         </div>
 
         <footer class="main-footer">
