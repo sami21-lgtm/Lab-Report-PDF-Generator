@@ -1,34 +1,15 @@
 window.onload = function() {
     const LOCAL_LOGO = 'diu.jpg'; 
-
-    const labBtn = document.getElementById('labBtn');
-    const assignBtn = document.getElementById('assignBtn');
-    const labOnly = document.getElementById('labOnly');
-    const assignOnly = document.getElementById('assignOnly');
     const genBtn = document.getElementById('genBtn');
     const outputPage = document.getElementById('outputPage');
-    const previewArea = document.getElementById('previewArea');
-
     let currentMode = 'lab';
 
-    if(assignBtn) {
-        assignBtn.addEventListener('click', function() {
-            currentMode = 'assign';
-            assignBtn.classList.add('active');
-            labBtn.classList.remove('active');
-            assignOnly.style.display = 'block';
-            labOnly.style.display = 'none';
-        });
-    }
+    document.getElementById('labBtn').onclick = () => { currentMode = 'lab'; switchUI(); };
+    document.getElementById('assignBtn').onclick = () => { currentMode = 'assign'; switchUI(); };
 
-    if(labBtn) {
-        labBtn.addEventListener('click', function() {
-            currentMode = 'lab';
-            labBtn.classList.add('active');
-            assignBtn.classList.remove('active');
-            labOnly.style.display = 'block';
-            assignOnly.style.display = 'none';
-        });
+    function switchUI() {
+        document.getElementById('labOnly').style.display = currentMode === 'lab' ? 'block' : 'none';
+        document.getElementById('assignOnly').style.display = currentMode === 'assign' ? 'block' : 'none';
     }
 
     genBtn.onclick = function() {
@@ -48,101 +29,79 @@ window.onload = function() {
             topic: document.getElementById('topicName')?.value || ''
         };
 
-        // ল্যাব রিপোর্টের টেবিল (আপনার আগের পছন্দমতো অপরিবর্তিত)
+        // ল্যাব রিপোর্টের জন্য উপরের বক্স (image_0318c8.png অনুযায়ী)
         let markingTable = `
-            <div style="margin: 10px 0 20px 0; border: 1.5px solid #000; width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
-                <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 4px; font-weight: bold; font-size: 14px; background: #f9f9f9;">Only for course Teacher</div>
+            <div style="border: 1.5px solid #000; margin-bottom: 30px; font-family: Arial, sans-serif;">
+                <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 6px; font-weight: bold; font-size: 14px; background: #fcfcfc;">Only for course Teacher</div>
                 <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 11px;">
-                    <tr style="border-bottom: 1px solid #000;"><th style="border-right: 1px solid #000; width: 30%; padding: 5px;"></th><th style="border-right: 1px solid #000;">Needs Improvement</th><th style="border-right: 1px solid #000;">Developing</th><th style="border-right: 1px solid #000;">Sufficient</th><th style="border-right: 1px solid #000;">Above Average</th><th>Total Mark</th></tr>
-                    <tr style="border-bottom: 1px solid #000; font-weight: bold;"><td style="border-right: 1px solid #000; text-align: left; padding: 5px;">Allocate mark & Percentage</td><td style="border-right: 1px solid #000;">25%</td><td style="border-right: 1px solid #000;">50%</td><td style="border-right: 1px solid #000;">75%</td><td style="border-right: 1px solid #000;">100%</td><td>25</td></tr>
-                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Understanding <span style="float:right; border: 1px solid #000; padding: 0 4px;">3</span></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td></tr>
-                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Analysis <span style="float:right; border: 1px solid #000; padding: 0 4px;">4</span></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td></tr>
-                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Implementation <span style="float:right; border: 1px solid #000; padding: 0 4px;">8</span></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td></tr>
-                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Report Writing <span style="float:right; border: 1px solid #000; padding: 0 4px;">10</span></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td></tr>
-                    <tr style="border-bottom: 1px solid #000; font-weight: bold;"><td colspan="5" style="border-right: 1px solid #000; text-align: right; padding: 6px;">Total obtained mark</td><td></td></tr>
-                    <tr><td style="border-right: 1px solid #000; text-align: left; padding: 10px 5px;">Comments</td><td colspan="5"></td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><th style="border-right: 1px solid #000; width: 35%; padding: 5px;"></th><th>Needs Imp.</th><th>Developing</th><th>Sufficient</th><th>Above Avg.</th><th>Total</th></tr>
+                    <tr style="border-bottom: 1px solid #000; font-weight: bold;"><td style="border-right: 1px solid #000; text-align: left; padding: 5px;">Allocate mark & %</td><td>25%</td><td>50%</td><td>75%</td><td>100%</td><td>25</td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 8px 5px;">Understanding <span style="float:right; border: 1px solid #000; padding: 0 5px;">3</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 8px 5px;">Analysis <span style="float:right; border: 1px solid #000; padding: 0 5px;">4</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 8px 5px;">Implementation <span style="float:right; border: 1px solid #000; padding: 0 5px;">8</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 8px 5px;">Report Writing <span style="float:right; border: 1px solid #000; padding: 0 5px;">10</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr style="font-weight: bold;"><td colspan="5" style="border-right: 1px solid #000; text-align: right; padding: 8px;">Total obtained mark</td><td></td></tr>
                 </table>
             </div>`;
 
-        // অ্যাসাইনমেন্টের জন্য বড় করে ওয়াটারমার্ক
-        let watermark = currentMode === 'assign' ? `<div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); opacity: 0.08; z-index: 0; pointer-events: none;"><img src="${LOCAL_LOGO}" style="width: 500px;"></div>` : "";
+        // বড় ওয়াটারমার্ক (অ্যাসাইনমেন্টের জন্য)
+        let watermark = currentMode === 'assign' ? `<div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); opacity: 0.1; z-index: 0;"><img src="${LOCAL_LOGO}" style="width: 550px;"></div>` : "";
 
-        // বডি কন্টেন্ট জেনারেশন
-        let bodyContent = "";
+        let content = "";
         if (currentMode === 'assign') {
-            // অ্যাসাইনমেন্টের জন্য আপনার স্ক্রিনশটের মতো Stylish & Spaced Layout
-            bodyContent = `
-                <div style="font-family: 'Times New Roman', Times, serif; color: #000; margin-top: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-around;">
-                    <div style="line-height: 2.8; margin-bottom: 20px;">
-                        <p style="font-size: 19px; margin: 0;"><strong>Course Code:</strong> ${d.code}</p>
-                        <p style="font-size: 19px; margin: 0;"><strong>Course Name:</strong> ${d.title}</p>
-                        <p style="font-size: 19px; margin: 0;"><strong>Semester:</strong> ${d.sem}</p>
-                        <p style="font-size: 19px; margin: 20px 0 5px 0;"><strong>Assignment Title:</strong> <span style="font-weight: bold; color: #003366;">${d.aTitle}</span></p>
-                        <p style="font-size: 19px; margin: 0;"><strong>Topic Name:</strong> ${d.topic}</p>
+            // অ্যাসাইনমেন্টে অনেক গ্যাপ এবং বড় ফন্ট (image_039189.png অনুযায়ী)
+            content = `
+                <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-around; font-family: 'Times New Roman', serif; position: relative; z-index: 1;">
+                    <div style="line-height: 3.5; font-size: 20px;">
+                        <p><strong>Course Code:</strong> ${d.code}</p>
+                        <p><strong>Course Name:</strong> ${d.title}</p>
+                        <p><strong>Semester:</strong> ${d.sem}</p>
+                        <p><strong>Assignment Title:</strong> <span style="font-weight: bold; border-bottom: 2px solid #003366;">${d.aTitle}</span></p>
+                        <p><strong>Topic Name:</strong> ${d.topic}</p>
                     </div>
-
-                    <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 30px;">
-                        <div style="border-left: 6px solid #003366; padding-left: 20px;">
-                            <p style="font-size: 13px; font-weight: bold; color: #555; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 2px;">SUBMITTED TO</p>
+                    <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+                        <div style="border-left: 8px solid #003366; padding-left: 20px;">
+                            <p style="font-size: 14px; color: #555; margin-bottom: 10px;">SUBMITTED TO</p>
                             <p style="font-size: 22px; font-weight: bold; margin: 0;">${d.fname}</p>
                             <p style="font-size: 17px; margin: 3px 0;">${d.fdes}</p>
-                            <p style="font-size: 16px; margin: 0; color: #333;">Daffodil International University</p>
                         </div>
-                        
-                        <div style="border-left: 6px solid #003366; padding-left: 20px;">
-                            <p style="font-size: 13px; font-weight: bold; color: #555; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 2px;">SUBMITTED BY</p>
+                        <div style="border-left: 8px solid #003366; padding-left: 20px;">
+                            <p style="font-size: 14px; color: #555; margin-bottom: 10px;">SUBMITTED BY</p>
                             <p style="font-size: 22px; font-weight: bold; margin: 0;">${d.sname}</p>
                             <p style="font-size: 18px; margin: 3px 0;">ID: <b>${d.sid}</b></p>
-                            <p style="font-size: 18px; margin: 3px 0;">Section: <b>${d.sec}</b></p>
-                            <p style="font-size: 17px; margin: 5px 0;">Date: ${d.date}</p>
+                            <p style="font-size: 17px;">Date: ${d.date}</p>
                         </div>
                     </div>
                 </div>`;
         } else {
-            // ল্যাব রিপোর্টের সেই চিরচেনা 'purba' ফরম্যাট
-            bodyContent = `
-                <div style="font-size: 17px; line-height: 2.3; margin-top: 15px; font-weight: bold; font-family: 'Times New Roman', serif;">
+            // ল্যাব রিপোর্টের তথ্য (বক্সের নিচে)
+            content = `
+                <div style="font-size: 18px; line-height: 2.8; font-weight: bold; font-family: 'Times New Roman', serif; position: relative; z-index: 1;">
                     <p>Semester: ${d.sem}</p>
                     <p>Student Name: ${d.sname}</p>
                     <p>Student ID: ${d.sid}</p>
-                    <p>Batch: ${d.sec.split('-')[0] || ''} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Section: ${d.sec.split('-')[1] || d.sec}</p>
+                    <p>Batch: ${d.sec}</p>
                     <p>Course Code: ${d.code}</p>
                     <p>Course Name: ${d.title}</p>
+                    <p>Lab No: ${d.lNo}</p>
+                    <p>Lab Title: ${d.lTitle}</p>
                     <p>Course Teacher Name: ${d.fname}</p>
-                    <p>Designation: ${d.fdes}</p>
                     <p>Submission Date: ${d.date}</p>
                 </div>`;
         }
 
         outputPage.innerHTML = `
             ${watermark}
-            <div style="position: relative; z-index: 1; height: 100%; border: ${currentMode === 'assign' ? '12px double #003366' : '1.5px solid #000'}; margin: 15px; padding: 50px; display: flex; flex-direction: column; text-align: left; background: #fff;">
-                
+            <div style="position: relative; height: 100%; border: ${currentMode === 'assign' ? '12px double #003366' : '1.5px solid #000'}; padding: 50px; display: flex; flex-direction: column; background: #fff;">
                 <div style="text-align: center; margin-bottom: 15px;">
-                    <img src="${LOCAL_LOGO}" style="height: 80px;">
+                    <img src="${LOCAL_LOGO}" style="height: 90px;">
                     <h1 style="font-size: 24px; margin: 15px 0 5px 0; color: #003366; font-family: 'Arial Black', sans-serif;">DAFFODIL INTERNATIONAL UNIVERSITY</h1>
-                    <div style="width: 60%; height: 3px; background: #003366; margin: 8px auto 12px auto;"></div>
-                    <h2 style="font-size: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px;">${currentMode === 'lab' ? 'Lab Report Submission' : 'ASSIGNMENT SUBMISSION'}</h2>
+                    <div style="width: 50%; height: 3px; background: #003366; margin: 8px auto;"></div>
+                    <h2 style="font-size: 18px; letter-spacing: 2px; font-weight: bold;">${currentMode === 'lab' ? 'LAB REPORT SUBMISSION' : 'ASSIGNMENT SUBMISSION'}</h2>
                 </div>
-
                 ${currentMode === 'lab' ? markingTable : ''}
-                ${bodyContent}
-
-                <div style="text-align: center; margin-top: auto; padding-top: 25px;">
-                    <p style="font-size: 13px; color: #666; letter-spacing: 2px; font-family: sans-serif;">www.daffodilvarsity.edu.bd</p>
-                </div>
+                ${content}
+                <div style="text-align: center; margin-top: auto; padding-top: 15px; font-size: 12px; color: #777;">www.daffodilvarsity.edu.bd</div>
             </div>`;
-
-        previewArea.style.display = 'block';
-        window.scrollTo({ top: outputPage.offsetTop, behavior: 'smooth' });
-    };
-
-    document.getElementById('downloadBtn').onclick = () => {
-        html2canvas(outputPage, { scale: 3 }).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jspdf.jsPDF('p', 'pt', 'a4');
-            pdf.addImage(imgData, 'PNG', 0, 0, 595.28, 841.89);
-            pdf.save(`DIU_${currentMode}_Cover.pdf`);
-        });
     };
 };
