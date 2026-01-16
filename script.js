@@ -11,7 +11,6 @@ window.onload = function() {
 
     let currentMode = 'lab';
 
-    // মোড সুইচ লজিক
     if(assignBtn) {
         assignBtn.addEventListener('click', function() {
             currentMode = 'assign';
@@ -49,83 +48,88 @@ window.onload = function() {
             topic: document.getElementById('topicName')?.value || ''
         };
 
-        // ছবির মতো টিচার অ্যাসেসমেন্ট টেবিল (পজিশন: টপ)
+        // ল্যাব রিপোর্টের জন্য আগের সেই পারফেক্ট টেবিল (উপরে থাকবে)
         let markingTable = `
-            <div style="margin: 10px 0 25px 0; border: 1.2px solid #000; width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
-                <div style="text-align: center; border-bottom: 1.2px solid #000; padding: 4px; font-weight: bold; font-size: 14px; background: #fff;">Only for course Teacher</div>
+            <div style="margin: 10px 0 20px 0; border: 1.5px solid #000; width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
+                <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 4px; font-weight: bold; font-size: 14px; background: #f9f9f9;">Only for course Teacher</div>
                 <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 11px;">
-                    <tr style="border-bottom: 1px solid #000;">
-                        <th style="border-right: 1px solid #000; width: 35%; padding: 5px;"></th>
-                        <th style="border-right: 1px solid #000;">Needs Improvement</th>
-                        <th style="border-right: 1px solid #000;">Developing</th>
-                        <th style="border-right: 1px solid #000;">Sufficient</th>
-                        <th style="border-right: 1px solid #000;">Above Average</th>
-                        <th>Total Mark</th>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #000; font-weight: bold;">
-                        <td style="border-right: 1px solid #000; text-align: left; padding: 5px;">Allocate mark & Percentage</td>
-                        <td style="border-right: 1px solid #000;">25%</td>
-                        <td style="border-right: 1px solid #000;">50%</td>
-                        <td style="border-right: 1px solid #000;">75%</td>
-                        <td style="border-right: 1px solid #000;">100%</td>
-                        <td>25</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #000;">
-                        <td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Understanding <span style="float:right; border: 1px solid #000; padding: 0 5px;">3</span></td>
-                        <td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #000;">
-                        <td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Analysis <span style="float:right; border: 1px solid #000; padding: 0 5px;">4</span></td>
-                        <td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #000;">
-                        <td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Implementation <span style="float:right; border: 1px solid #000; padding: 0 5px;">8</span></td>
-                        <td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #000;">
-                        <td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Report Writing <span style="float:right; border: 1px solid #000; padding: 0 5px;">10</span></td>
-                        <td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #000; font-weight: bold;">
-                        <td colspan="5" style="border-right: 1px solid #000; text-align: right; padding: 6px;">Total obtained mark</td><td></td>
-                    </tr>
-                    <tr><td style="border-right: 1px solid #000; text-align: left; padding: 12px 5px;">Comments</td><td colspan="5"></td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><th style="border-right: 1px solid #000; width: 30%; padding: 5px;"></th><th style="border-right: 1px solid #000;">Needs Improvement</th><th style="border-right: 1px solid #000;">Developing</th><th style="border-right: 1px solid #000;">Sufficient</th><th style="border-right: 1px solid #000;">Above Average</th><th>Total Mark</th></tr>
+                    <tr style="border-bottom: 1px solid #000; font-weight: bold;"><td style="border-right: 1px solid #000; text-align: left; padding: 5px;">Allocate mark & Percentage</td><td style="border-right: 1px solid #000;">25%</td><td style="border-right: 1px solid #000;">50%</td><td style="border-right: 1px solid #000;">75%</td><td style="border-right: 1px solid #000;">100%</td><td>25</td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Understanding <span style="float:right; border: 1px solid #000; padding: 0 4px;">3</span></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Analysis <span style="float:right; border: 1px solid #000; padding: 0 4px;">4</span></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Implementation <span style="float:right; border: 1px solid #000; padding: 0 4px;">8</span></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td></tr>
+                    <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 6px 5px;">Report Writing <span style="float:right; border: 1px solid #000; padding: 0 4px;">10</span></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td style="border-right: 1px solid #000;"></td><td></td></tr>
+                    <tr style="border-bottom: 1px solid #000; font-weight: bold;"><td colspan="5" style="border-right: 1px solid #000; text-align: right; padding: 6px;">Total obtained mark</td><td></td></tr>
+                    <tr><td style="border-right: 1px solid #000; text-align: left; padding: 10px 5px;">Comments</td><td colspan="5"></td></tr>
                 </table>
             </div>`;
 
-        // ওয়াটারমার্ক (অ্যাসাইনমেন্টের জন্য)
-        let watermark = currentMode === 'assign' ? `<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.1; z-index: 0; pointer-events: none;"><img src="${LOCAL_LOGO}" style="width: 450px;"></div>` : "";
+        // অ্যাসাইনমেন্টের জন্য Creative Watermark
+        let watermark = currentMode === 'assign' ? `<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.1; z-index: 0; pointer-events: none;"><img src="${LOCAL_LOGO}" style="width: 480px;"></div>` : "";
+
+        // বডি কন্টেন্ট জেনারেশন
+        let bodyContent = "";
+        if (currentMode === 'assign') {
+            // অ্যাসাইনমেন্টের জন্য Stylish & Creative Layout
+            bodyContent = `
+                <div style="font-family: 'Segoe UI', Tahoma, sans-serif; color: #000; margin-top: 10px;">
+                    <div style="line-height: 2.3; margin-bottom: 30px;">
+                        <p style="font-size: 17px; margin: 0;"><strong>Course Code:</strong> ${d.code}</p>
+                        <p style="font-size: 17px; margin: 0;"><strong>Course Name:</strong> ${d.title}</p>
+                        <p style="font-size: 17px; margin: 0;"><strong>Semester:</strong> ${d.sem}</p>
+                        <p style="font-size: 17px; margin: 15px 0 5px 0;"><strong>Assignment Title:</strong></p>
+                        <p style="font-size: 20px; font-weight: bold; color: #003366; border-bottom: 2px solid #003366; display: inline-block; margin: 0;">${d.aTitle}</p>
+                        <p style="font-size: 17px; margin: 10px 0 0 0;"><strong>Topic Name:</strong> ${d.topic}</p>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 40px; gap: 20px;">
+                        <div style="width: 48%; border-left: 5px solid #003366; padding-left: 15px; background: #fcfcfc; padding-top: 10px; padding-bottom: 10px;">
+                            <p style="font-size: 13px; font-weight: bold; color: #555; text-transform: uppercase; margin-bottom: 8px;">SUBMITTED TO</p>
+                            <p style="font-size: 18px; font-weight: bold; margin: 0;">${d.fname}</p>
+                            <p style="font-size: 15px; margin: 2px 0;">${d.fdes}</p>
+                            <p style="font-size: 14px; margin: 0; color: #333;">Daffodil International University</p>
+                        </div>
+                        <div style="width: 48%; border-left: 5px solid #003366; padding-left: 15px; background: #fcfcfc; padding-top: 10px; padding-bottom: 10px;">
+                            <p style="font-size: 13px; font-weight: bold; color: #555; text-transform: uppercase; margin-bottom: 8px;">SUBMITTED BY</p>
+                            <p style="font-size: 18px; font-weight: bold; margin: 0;">${d.sname}</p>
+                            <p style="font-size: 15px; margin: 2px 0;">ID: <b>${d.sid}</b></p>
+                            <p style="font-size: 15px; margin: 2px 0;">Section: <b>${d.sec}</b></p>
+                            <p style="font-size: 14px; margin: 5px 0;">Date: ${d.date}</p>
+                        </div>
+                    </div>
+                </div>`;
+        } else {
+            // ল্যাব রিপোর্টের জন্য আপনার পছন্দের সেই 'purba' ফরম্যাট
+            bodyContent = `
+                <div style="font-size: 17px; line-height: 2.3; margin-top: 15px; font-weight: bold; font-family: 'Times New Roman', serif;">
+                    <p>Semester: ${d.sem}</p>
+                    <p>Student Name: ${d.sname}</p>
+                    <p>Student ID: ${d.sid}</p>
+                    <p>Batch: ${d.sec.split('-')[0] || ''} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Section: ${d.sec.split('-')[1] || d.sec}</p>
+                    <p>Course Code: ${d.code}</p>
+                    <p>Course Name: ${d.title}</p>
+                    <p>Course Teacher Name: ${d.fname}</p>
+                    <p>Designation: ${d.fdes}</p>
+                    <p>Submission Date: ${d.date}</p>
+                </div>`;
+        }
 
         outputPage.innerHTML = `
             ${watermark}
-            <div style="position: relative; z-index: 1; height: 100%; border: 1.5px solid #000; margin: 20px; padding: 45px; display: flex; flex-direction: column; text-align: left; font-family: 'Times New Roman', Times, serif; color: #000;">
+            <div style="position: relative; z-index: 1; height: 100%; border: ${currentMode === 'assign' ? '5px double #003366' : '1.5px solid #000'}; margin: 20px; padding: 45px; display: flex; flex-direction: column; text-align: left; background: #fff;">
                 
-                <div style="text-align: center; margin-bottom: 5px;">
-                    <img src="${LOCAL_LOGO}" style="height: 65px;">
-                    <h1 style="font-size: 20px; margin: 10px 0 5px 0; font-weight: bold; color: #003366;">Daffodil International University</h1>
-                    <h2 style="font-size: 18px; margin: 0 0 10px 0; text-decoration: none; font-weight: bold;">${currentMode === 'lab' ? 'Lab Report' : 'Assignment'}</h2>
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <img src="${LOCAL_LOGO}" style="height: 70px;">
+                    <h1 style="font-size: 22px; margin: 10px 0 5px 0; color: #003366; font-family: 'Arial Black', sans-serif;">DAFFODIL INTERNATIONAL UNIVERSITY</h1>
+                    <div style="width: 50%; height: 2px; background: #003366; margin: 5px auto 10px auto;"></div>
+                    <h2 style="font-size: 18px; font-weight: bold; text-transform: uppercase;">${currentMode === 'lab' ? 'Lab Report Submission' : 'Assignment Submission'}</h2>
                 </div>
 
                 ${currentMode === 'lab' ? markingTable : ''}
+                ${bodyContent}
 
-                <div style="font-size: 17px; line-height: 2.3; margin-top: 10px; font-weight: 600;">
-                    <p><strong>Semester:</strong> ${d.sem}</p>
-                    <p><strong>Student Name:</strong> ${d.sname}</p>
-                    <p><strong>Student ID:</strong> ${d.sid}</p>
-                    <p><strong>Batch:</strong> ${d.sec.split('-')[0] || ''} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Section:</strong> ${d.sec.split('-')[1] || d.sec}</p>
-                    <p><strong>Course Code:</strong> ${d.code}</p>
-                    <p><strong>Course Name:</strong> ${d.title}</p>
-                    ${currentMode === 'lab' ? 
-                        `<p><strong>Lab No:</strong> ${d.lNo}</p><p><strong>Lab Title:</strong> ${d.lTitle}</p>` : 
-                        `<p><strong>Assignment Title:</strong> ${d.aTitle}</p><p><strong>Topic Name:</strong> ${d.topic}</p>`
-                    }
-                    <p><strong>Course Teacher Name:</strong> ${d.fname}</p>
-                    <p><strong>Designation:</strong> ${d.fdes}</p>
-                    <p><strong>Submission Date:</strong> ${d.date}</p>
-                </div>
-
-                <div style="text-align: center; margin-top: auto; padding-top: 15px; border-top: 1px solid #eee;">
-                    <p style="font-size: 11px; letter-spacing: 1px; color: #555;">www.daffodilvarsity.edu.bd</p>
+                <div style="text-align: center; margin-top: auto; padding-top: 20px;">
+                    <p style="font-size: 12px; color: #666; letter-spacing: 1.5px; font-family: sans-serif;">www.daffodilvarsity.edu.bd</p>
                 </div>
             </div>`;
 
