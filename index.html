@@ -11,7 +11,7 @@
 <body>
     <div class="wrapper">
         <div class="logo-container">
-            <img src="diu.jpg" alt="DIU Logo" class="header-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/3/3c/Daffodil_International_University_logo.png" alt="DIU Logo" class="header-logo">
             <h2 class="main-title">DIU Lab & Assignment Generator</h2>
         </div>
 
@@ -25,18 +25,17 @@
                 <input type="text" placeholder="Student ID" id="sid">
                 <input type="text" placeholder="Student Name" id="sname">
                 <input type="text" placeholder="Student Department" id="sdept">
-                
                 <input type="text" placeholder="Faculty Name" id="fname">
-                <input type="text" placeholder="Faculty Designation (e.g. Lecturer)" id="fdesignation">
+                <input type="text" placeholder="Faculty Designation" id="fdesignation">
                 <input type="text" placeholder="Faculty Department" id="fdept">
 
-                <label>Submission Date (DD/MM/YY)</label>
+                <label>Submission Date (DD/MM/YYYY)</label>
                 <div class="date-row">
                     <input type="text" id="dd" maxlength="2" placeholder="DD">
                     <span>/</span>
                     <input type="text" id="mm" maxlength="2" placeholder="MM">
                     <span>/</span>
-                    <input type="text" id="yy" maxlength="4" placeholder="YY">
+                    <input type="text" id="yy" maxlength="4" placeholder="YYYY">
                 </div>
             </div>
 
@@ -45,17 +44,14 @@
                     <button type="button" id="labBtn" class="toggle active">Lab Report</button>
                     <button type="button" id="assignBtn" class="toggle">Assignment Cover</button>
                 </div>
-
                 <div id="labOnly">
                     <input type="text" placeholder="Lab No." id="labNo">
                     <input type="text" placeholder="Lab Title" id="labTitle">
                 </div>
-
                 <div id="assignOnly" style="display: none;">
                     <input type="text" placeholder="Assignment Title" id="assignTitle">
                     <input type="text" placeholder="Topic Name" id="topicName">
                 </div>
-
                 <button type="button" id="genBtn" class="gen-btn">Generate Now</button>
             </div>
         </div>
@@ -63,19 +59,11 @@
         <div id="previewArea" style="display: none;">
             <div id="outputPage" class="cover-box">
                 </div>
-            
             <div class="action-btns">
-                <button id="downloadBtn" class="btn-pdf">Download as PDF</button>
-                <button id="downloadImgBtn" class="btn-img">Download as Image</button>
+                <button id="downloadBtn" class="btn-pdf">Download PDF</button>
+                <button id="downloadImgBtn" class="btn-img">Download Image</button>
             </div>
         </div>
-
-        <footer class="footer-dev">
-            <p>Developed by <strong>Emtiaz Hossain Sami</strong></p>
-            <p>Department of Software Engineering</p>
-            <p>Daffodil International University</p>
-            <p class="copyright-line">© 2026. All Rights Reserved.</p>
-        </footer>
     </div>
     <script src="script.js"></script>
 </body>
