@@ -1,4 +1,4 @@
-const LOGO_URL = 'https://upload.wikimedia.org/wikipedia/en/3/3c/Daffodil_International_University_logo.png';
+const LOGO_URL = 'diu.jpg';
 
 const labBtn = document.getElementById('labBtn');
 const assignBtn = document.getElementById('assignBtn');
