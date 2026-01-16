@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIU Cover Page Generator</title>
+    <title>DIU Lab & Assignment Generator</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -11,7 +11,7 @@
 <body>
     <div class="wrapper">
         <div class="logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/en/3/3c/Daffodil_International_University_logo.png" alt="DIU Logo" class="header-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/3/3c/Daffodil_International_University_logo.png" alt="DIU Logo" class="header-logo" crossorigin="anonymous">
             <h2 class="main-title">DIU Lab & Assignment Generator</h2>
         </div>
 
@@ -43,11 +43,11 @@
                     <button type="button" id="labBtn" class="toggle active">Lab Report</button>
                     <button type="button" id="assignBtn" class="toggle">Assignment</button>
                 </div>
-                <div id="labFields">
+                <div id="labOnly">
                     <input type="text" placeholder="Lab No." id="labNo">
                     <input type="text" placeholder="Lab Title" id="labTitle">
                 </div>
-                <div id="assignFields" style="display: none;">
+                <div id="assignOnly" style="display: none;">
                     <input type="text" placeholder="Assignment Title" id="assignTitle">
                     <input type="text" placeholder="Topic Name" id="topicName">
                 </div>
@@ -56,16 +56,16 @@
         </div>
 
         <div id="previewArea" style="display: none;">
-            <div id="outputPage" class="cover-box">
-                </div>
+            <div id="outputPage" class="cover-box"></div>
             <div class="action-btns">
                 <button id="downloadBtn" class="btn-pdf">Download PDF</button>
+                <button id="downloadImgBtn" class="btn-img">Download Image</button>
             </div>
         </div>
 
-        <footer class="developer-credit">
-            Developed by <strong>Emtiaz Hossain Sami</strong><br>
-            Department of Software Engineering, DIU © 2026. All Rights Reserved.
+        <footer class="main-footer">
+            <p>Developed by <strong>Emtiaz Hossain Sami</strong></p>
+            <p>Department of Software Engineering, DIU © 2026</p>
         </footer>
     </div>
     <script src="script.js"></script>
