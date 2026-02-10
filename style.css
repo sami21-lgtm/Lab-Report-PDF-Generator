@@ -1,7 +1,15 @@
 /* General Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
-.wrapper { width: 100%; max-width: 900px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+.wrapper { 
+    width: 100%; 
+    max-width: 900px; 
+    background: #fff; 
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
 
 /* Logo & Title */
 .logo-container { text-align: center; margin-bottom: 25px; }
@@ -10,53 +18,85 @@ body { background: #f4f7f6; display: flex; justify-content: center; padding: 20p
 
 /* Layout Split */
 .split-container { display: flex; gap: 20px; flex-wrap: wrap; }
-.left-pane, .right-pane { flex: 1; min-width: 300px; background: #fafafa; padding: 20px; border-radius: 8px; border: 1px solid #eee; }
+.left-pane, .right-pane { 
+    flex: 1; 
+    min-width: 300px; 
+    background: #fafafa; 
+    padding: 20px; 
+    border-radius: 8px; 
+    border: 1px solid #eee; 
+}
 
 /* Input Fields */
-input[type=text] { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; }
+input[type=text] { 
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    font-size: 14px; 
+}
 input[type=text]:focus { border-color: #002b59; outline: none; box-shadow: 0 0 5px rgba(0,43,89,0.2); }
 
-/* Date row style */
 .date-row { display: flex; gap: 10px; margin-top: 5px; margin-bottom: 15px; }
 .date-row input { width: 60px; text-align: center; }
 
-/* Label style */
 label { font-size: 13px; font-weight: bold; color: #555; display: block; margin-bottom: 5px; }
 
 /* Toggle Button Style */
 .toggle-bar { display: flex; gap: 10px; margin-bottom: 15px; }
-.toggle { flex: 1; padding: 10px; border: 1px solid #002b59; background: #fff; cursor: pointer; border-radius: 5px; font-weight: bold; transition: 0.3s; font-size: 13px; color: #002b59; }
+.toggle { 
+    flex: 1; 
+    padding: 10px; 
+    border: 1px solid #002b59; 
+    background: #fff; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    font-weight: bold; 
+    transition: 0.3s; 
+    font-size: 13px; 
+    color: #002b59; 
+}
 .toggle.active { background: #002b59 !important; color: #fff !important; }
 
 /* Generate Button */
-.gen-btn { width: 100%; padding: 15px; background: #002b59; color: #fff; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.3s; }
+.gen-btn { 
+    width: 100%; 
+    padding: 15px; 
+    background: #002b59; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    margin-top: 10px; 
+    transition: 0.3s; 
+}
 .gen-btn:hover { background: #004080; }
 
-/* --- Preview Area Wrapper --- */
+/* --- Preview Area Wrapper (Fixed White Space) --- */
 #previewArea {
     width: 100%;
     margin-top: 30px;
+    overflow: hidden; /* Extra height kete dibe */
+}
+
+#outputPage {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* --- Capture Area --- */
+/* --- Capture Area (A4 Size) --- */
 #captureArea { 
     position: relative;
-    width: 794px; /* A4 width */
-    height: 1123px; /* A4 height */
+    width: 794px; 
+    height: 1123px; 
     background: #fff; 
-    border: 1px solid #ddd; 
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    overflow: hidden; 
-    display: flex;
-    flex-direction: column;
     transform-origin: top center;
 }
-
-/* Z-index content jeno watermark er upore thake */
-#captureArea > div { position: relative; z-index: 2; }
 
 /* Footer Style */
 .main-footer { 
@@ -70,26 +110,24 @@ label { font-size: 13px; font-weight: bold; color: #555; display: block; margin-
     clear: both;
 }
 
-/* Mobile Responsive Fix */
+/* --- Mobile Responsive Fix --- */
 @media (max-width: 850px) {
     .wrapper { padding: 15px; }
     .split-container { flex-direction: column; }
-    .toggle { font-size: 11px; padding: 8px 5px; }
     
-    /* Ekhaneii main kaaj: Scale korle space adjust kora */
+    /* Scaling and Margin Fix to remove blank space */
     #captureArea {
-        transform: scale(0.40); /* Screen size onujayi adjust kora */
-        margin-bottom: -650px; /* Scale korar por extra space muche dibe */
+        transform: scale(0.42); /* Mobile screen e fit hobar jonno */
+        margin-bottom: -640px; /* Scale korar por baki khali jayga muche dibe */
     }
     
-    /* Download button ke niche namano */
-    #downloadPDF {
+    .action-btns {
         position: relative;
         z-index: 10;
-        margin-top: 20px;
+        margin-top: 10px;
     }
 
     .main-footer {
-        margin-top: 40px;
+        margin-top: 30px;
     }
 }
