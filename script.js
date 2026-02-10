@@ -1,6 +1,7 @@
 window.onload = function() {
     const LOCAL_LOGO = 'diu.jpg'; 
 
+    // Elements selection
     const labBtn = document.getElementById('labBtn');
     const assignBtn = document.getElementById('assignBtn');
     const assessBtn = document.getElementById('assessBtn');
@@ -15,26 +16,39 @@ window.onload = function() {
 
     let currentMode = 'lab';
 
-    // Toggle Function - Notun kore kora hoyeche jate button kaj kore
-    function setMode(mode) {
+    // Toggle Functionality
+    function switchMode(mode) {
         currentMode = mode;
         
-        // Active Button Style Change
-        labBtn.classList.toggle('active', mode === 'lab');
-        assignBtn.classList.toggle('active', mode === 'assign');
-        assessBtn.classList.toggle('active', mode === 'assess');
+        // Remove active class from all buttons
+        labBtn.classList.remove('active');
+        assignBtn.classList.remove('active');
+        assessBtn.classList.remove('active');
 
-        // Div Show/Hide Change
-        labOnly.style.display = (mode === 'lab' ? 'block' : 'none');
-        assignOnly.style.display = (mode === 'assign' ? 'block' : 'none');
-        assessOnly.style.display = (mode === 'assess' ? 'block' : 'none');
+        // Hide all specific sections
+        labOnly.style.display = 'none';
+        assignOnly.style.display = 'none';
+        assessOnly.style.display = 'none';
+
+        // Activate the selected one
+        if (mode === 'lab') {
+            labBtn.classList.add('active');
+            labOnly.style.display = 'block';
+        } else if (mode === 'assign') {
+            assignBtn.classList.add('active');
+            assignOnly.style.display = 'block';
+        } else if (mode === 'assess') {
+            assessBtn.classList.add('active');
+            assessOnly.style.display = 'block';
+        }
     }
 
-    // Button Event Listeners
-    labBtn.addEventListener('click', () => setMode('lab'));
-    assignBtn.addEventListener('click', () => setMode('assign'));
-    assessBtn.addEventListener('click', () => setMode('assess'));
+    // Click events
+    labBtn.onclick = () => switchMode('lab');
+    assignBtn.onclick = () => switchMode('assign');
+    assessBtn.onclick = () => switchMode('assess');
 
+    // Generate Button Click
     if (genBtn) {
         genBtn.onclick = function() {
             const d = {
@@ -57,12 +71,14 @@ window.onload = function() {
                 assessTitle: document.getElementById('assessTitle')?.value || ''
             };
 
+            // Watermark Logic
             let watermark = (currentMode !== 'lab') ? `
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); opacity: 0.08; z-index: 0; pointer-events: none; width: 80%; text-align: center;">
                     <img src="${LOCAL_LOGO}" style="width: 400px;">
                     <h1 style="font-size: 80px; font-family: 'Arial Black', sans-serif; margin-top: 20px;">DIU</h1>
                 </div>` : '';
 
+            // Layout Content
             let bodyHTML = "";
             let headerText = "";
             let markingTable = "";
@@ -72,37 +88,32 @@ window.onload = function() {
                 markingTable = `<div style="position: relative; z-index: 1; border: 1.5px solid #000; margin: 0 auto 20px auto; width: 95%; font-family: Arial, sans-serif;">
                     <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 5px; font-weight: bold; background: #f0f0f0; font-size: 13px;">Only for course Teacher</div>
                     <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 11px;">
-                        <tr style="border-bottom: 1px solid #000;"><th style="border-right: 1px solid #000; width: 35%; padding: 5px;"></th><th>Needs Imp.</th><th>Developing</th><th>Sufficient</th><th>Above Avg.</th><th>Total</th></tr>
+                        <tr style="border-bottom: 1px solid #000;"><th style="border-right: 1px solid #000; width: 35%; padding: 5px;">Criteria</th><th>Needs Imp.</th><th>Developing</th><th>Sufficient</th><th>Above Avg.</th><th>Total</th></tr>
                         <tr style="border-bottom: 1px solid #000; font-weight: bold; background: #fafafa;"><td style="border-right: 1px solid #000; text-align: left; padding: 5px;">Allocate mark & %</td><td>25%</td><td>50%</td><td>75%</td><td>100%</td><td>25</td></tr>
                         <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 12px 5px;">Understanding <span style="float:right; border: 1px solid #000; padding: 0 5px;">3</span></td><td></td><td></td><td></td><td></td><td></td></tr>
                         <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 12px 5px;">Analysis <span style="float:right; border: 1px solid #000; padding: 0 5px;">4</span></td><td></td><td></td><td></td><td></td><td></td></tr>
                         <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 12px 5px;">Implementation <span style="float:right; border: 1px solid #000; padding: 0 5px;">8</span></td><td></td><td></td><td></td><td></td><td></td></tr>
                         <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 12px 5px;">Report Writing <span style="float:right; border: 1px solid #000; padding: 0 5px;">10</span></td><td></td><td></td><td></td><td></td><td></td></tr>
-                        <tr style="font-weight: bold;"><td colspan="5" style="border-right: 1px solid #000; text-align: right; padding: 10px;">Total obtained mark</td><td style="background: #fff;"></td></tr>
                     </table>
                 </div>`;
-                bodyHTML = `<div style="position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 10px; width: 85%; margin: 0 auto; text-align: left;">
-                                <div style="font-size: 18px; line-height: 2.8; font-weight: bold; font-family: 'Times New Roman', serif;">
-                                    <p>Course Code: ${d.code}</p> <p>Course Name: ${d.title}</p>
-                                    <p>Lab No: ${d.lNo}</p> <p>Lab Title: ${d.lTitle}</p>
-                                    <p>Semester: ${d.sem}</p>
-                                </div>
+                bodyHTML = `<div style="position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column; width: 85%; margin: 10px auto; text-align: left; font-size: 18px; line-height: 2.8; font-weight: bold; font-family: 'Times New Roman', serif;">
+                                <p>Course Code: ${d.code}</p> <p>Course Name: ${d.title}</p>
+                                <p>Lab No: ${d.lNo}</p> <p>Lab Title: ${d.lTitle}</p>
+                                <p>Semester: ${d.sem}</p>
                             </div>`;
             } else {
                 headerText = (currentMode === 'assign' ? "ASSIGNMENT SUBMISSION" : "LAB ASSESSMENT SUBMISSION");
-                let subNo = (currentMode === 'assign' ? d.aNo : d.assessNo);
-                let subTitle = (currentMode === 'assign' ? d.topic : d.assessTitle);
-                let subLabel = (currentMode === 'assign' ? "Assignment No" : "Assessment No");
-                let topicLabel = (currentMode === 'assign' ? "Topic Name" : "Assessment Title");
+                let labelNo = (currentMode === 'assign' ? "Assignment No" : "Assessment No");
+                let labelTitle = (currentMode === 'assign' ? "Topic Name" : "Assessment Title");
+                let valNo = (currentMode === 'assign' ? d.aNo : d.assessNo);
+                let valTitle = (currentMode === 'assign' ? d.topic : d.assessTitle);
 
-                bodyHTML = `<div style="position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; font-family: 'Times New Roman', serif; width: 85%; margin: 0 auto; text-align: left;">
-                                <div style="line-height: 4.5; font-size: 21px;">
-                                    <p><strong>Course Code:</strong> ${d.code}</p>
-                                    <p><strong>Course Name:</strong> ${d.title}</p>
-                                    <p><strong>Semester:</strong> ${d.sem}</p>
-                                    <p><strong>${subLabel}:</strong> ${subNo}</p>
-                                    <p><strong>${topicLabel}:</strong> ${subTitle}</p>
-                                </div>
+                bodyHTML = `<div style="position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; font-family: 'Times New Roman', serif; width: 85%; margin: 0 auto; text-align: left; line-height: 4.5; font-size: 21px;">
+                                <p><strong>Course Code:</strong> ${d.code}</p>
+                                <p><strong>Course Name:</strong> ${d.title}</p>
+                                <p><strong>Semester:</strong> ${d.sem}</p>
+                                <p><strong>${labelNo}:</strong> ${valNo}</p>
+                                <p><strong>${labelTitle}:</strong> ${valTitle}</p>
                             </div>`;
             }
 
@@ -116,7 +127,7 @@ window.onload = function() {
                     </div>
                     ${markingTable}
                     ${bodyHTML}
-                    <div style="position: relative; z-index: 1; display: flex; justify-content: space-between; margin-top: auto; padding-top: 40px; font-family: 'Times New Roman', serif; width: 90%; margin-left: auto; margin-right: auto;">
+                    <div style="position: relative; z-index: 1; display: flex; justify-content: space-between; margin-top: auto; padding-top: 40px; font-family: 'Times New Roman', serif; width: 90%; margin: 0 auto;">
                         <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px;">
                             <p style="font-size: 13px; font-weight: bold; color: #666; margin: 0 0 5px 0;">SUBMITTED TO</p>
                             <p style="font-size: 18px; font-weight: bold; margin: 0;">${d.fname}</p>
@@ -135,12 +146,13 @@ window.onload = function() {
                     <button id="downloadPDF" style="padding: 12px 25px; background: #d9534f; color: white; border: none; cursor: pointer; font-weight: bold; border-radius: 5px;">Download PDF</button>
                 </div>`;
 
+            // Download PDF
             document.getElementById('downloadPDF').onclick = function() {
                 const { jsPDF } = window.jspdf;
                 html2canvas(document.querySelector("#captureArea"), { scale: 3 }).then(canvas => {
                     const pdf = new jsPDF('p', 'mm', 'a4');
                     pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
-                    pdf.save(`DIU-${currentMode}-Cover.pdf`);
+                    pdf.save(`DIU-${currentMode}-Cover-Page.pdf`);
                 });
             };
             
