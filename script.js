@@ -1,7 +1,7 @@
 window.onload = function() {
     const LOCAL_LOGO = 'diu.jpg'; 
 
-    // Elements selection
+    // 1. Element Selection
     const labBtn = document.getElementById('labBtn');
     const assignBtn = document.getElementById('assignBtn');
     const assessBtn = document.getElementById('assessBtn');
@@ -16,143 +16,125 @@ window.onload = function() {
 
     let currentMode = 'lab';
 
-    // Toggle Functionality
-    function switchMode(mode) {
+    // 2. Toggle Logic (Etai button kaaj korar main jayga)
+    function switchTab(mode) {
         currentMode = mode;
         
-        // Remove active class from all buttons
-        labBtn.classList.remove('active');
-        assignBtn.classList.remove('active');
-        assessBtn.classList.remove('active');
+        // Button Class Update
+        labBtn.classList.toggle('active', mode === 'lab');
+        assignBtn.classList.toggle('active', mode === 'assign');
+        assessBtn.classList.toggle('active', mode === 'assess');
 
-        // Hide all specific sections
-        labOnly.style.display = 'none';
-        assignOnly.style.display = 'none';
-        assessOnly.style.display = 'none';
-
-        // Activate the selected one
-        if (mode === 'lab') {
-            labBtn.classList.add('active');
-            labOnly.style.display = 'block';
-        } else if (mode === 'assign') {
-            assignBtn.classList.add('active');
-            assignOnly.style.display = 'block';
-        } else if (mode === 'assess') {
-            assessBtn.classList.add('active');
-            assessOnly.style.display = 'block';
-        }
+        // Input Fields Show/Hide
+        labOnly.style.display = (mode === 'lab' ? 'block' : 'none');
+        assignOnly.style.display = (mode === 'assign' ? 'block' : 'none');
+        assessOnly.style.display = (mode === 'assess' ? 'block' : 'none');
+        
+        console.log("Current Mode switched to: " + mode);
     }
 
-    // Click events
-    labBtn.onclick = () => switchMode('lab');
-    assignBtn.onclick = () => switchMode('assign');
-    assessBtn.onclick = () => switchMode('assess');
+    // Button-e click detect korar jonno
+    labBtn.onclick = () => switchTab('lab');
+    assignBtn.onclick = () => switchTab('assign');
+    assessBtn.onclick = () => switchTab('assess');
 
-    // Generate Button Click
+    // 3. Generate Logic
     if (genBtn) {
         genBtn.onclick = function() {
             const d = {
-                code: document.getElementById('courseCode')?.value || '',
-                title: document.getElementById('courseTitle')?.value || '',
-                sec: document.getElementById('section')?.value || '',
-                sem: document.getElementById('semester')?.value || '',
-                sid: document.getElementById('sid')?.value || '',
-                sname: document.getElementById('sname')?.value || '',
-                sdept: document.getElementById('sdepartment')?.value || '', 
-                fname: document.getElementById('fname')?.value || '',
-                fdes: document.getElementById('fdesignation')?.value || '',
-                fdept: document.getElementById('fdepartment')?.value || '',
-                date: (document.getElementById('dd')?.value || '00') + '/' + (document.getElementById('mm')?.value || '00') + '/2026',
-                lNo: document.getElementById('labNo')?.value || '',
-                lTitle: document.getElementById('labTitle')?.value || '',
-                aNo: document.getElementById('assignNo')?.value || '', 
-                topic: document.getElementById('topicName')?.value || '',
-                assessNo: document.getElementById('assessNo')?.value || '',
-                assessTitle: document.getElementById('assessTitle')?.value || ''
+                code: document.getElementById('courseCode').value,
+                title: document.getElementById('courseTitle').value,
+                sec: document.getElementById('section').value,
+                sem: document.getElementById('semester').value,
+                sid: document.getElementById('sid').value,
+                sname: document.getElementById('sname').value,
+                sdept: document.getElementById('sdepartment').value, 
+                fname: document.getElementById('fname').value,
+                fdes: document.getElementById('fdesignation').value,
+                fdept: document.getElementById('fdepartment').value,
+                date: (document.getElementById('dd').value || '00') + '/' + (document.getElementById('mm').value || '00') + '/2026',
+                lNo: document.getElementById('labNo').value,
+                lTitle: document.getElementById('labTitle').value,
+                aNo: document.getElementById('assignNo').value, 
+                topic: document.getElementById('topicName').value,
+                assessNo: document.getElementById('assessNo').value,
+                assessTitle: document.getElementById('assessTitle').value
             };
 
-            // Watermark Logic
+            // Watermark logic
             let watermark = (currentMode !== 'lab') ? `
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); opacity: 0.08; z-index: 0; pointer-events: none; width: 80%; text-align: center;">
                     <img src="${LOCAL_LOGO}" style="width: 400px;">
                     <h1 style="font-size: 80px; font-family: 'Arial Black', sans-serif; margin-top: 20px;">DIU</h1>
                 </div>` : '';
 
-            // Layout Content
-            let bodyHTML = "";
-            let headerText = "";
-            let markingTable = "";
+            // Dynamic Text
+            let headerLabel = "LAB REPORT SUBMISSION";
+            let midContent = "";
+            let markingBox = "";
 
             if (currentMode === 'lab') {
-                headerText = "LAB REPORT SUBMISSION";
-                markingTable = `<div style="position: relative; z-index: 1; border: 1.5px solid #000; margin: 0 auto 20px auto; width: 95%; font-family: Arial, sans-serif;">
-                    <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 5px; font-weight: bold; background: #f0f0f0; font-size: 13px;">Only for course Teacher</div>
-                    <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 11px;">
-                        <tr style="border-bottom: 1px solid #000;"><th style="border-right: 1px solid #000; width: 35%; padding: 5px;">Criteria</th><th>Needs Imp.</th><th>Developing</th><th>Sufficient</th><th>Above Avg.</th><th>Total</th></tr>
-                        <tr style="border-bottom: 1px solid #000; font-weight: bold; background: #fafafa;"><td style="border-right: 1px solid #000; text-align: left; padding: 5px;">Allocate mark & %</td><td>25%</td><td>50%</td><td>75%</td><td>100%</td><td>25</td></tr>
-                        <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 12px 5px;">Understanding <span style="float:right; border: 1px solid #000; padding: 0 5px;">3</span></td><td></td><td></td><td></td><td></td><td></td></tr>
-                        <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 12px 5px;">Analysis <span style="float:right; border: 1px solid #000; padding: 0 5px;">4</span></td><td></td><td></td><td></td><td></td><td></td></tr>
-                        <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 12px 5px;">Implementation <span style="float:right; border: 1px solid #000; padding: 0 5px;">8</span></td><td></td><td></td><td></td><td></td><td></td></tr>
-                        <tr style="border-bottom: 1px solid #000;"><td style="border-right: 1px solid #000; text-align: left; padding: 12px 5px;">Report Writing <span style="float:right; border: 1px solid #000; padding: 0 5px;">10</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+                headerLabel = "LAB REPORT SUBMISSION";
+                markingBox = `<div style="border: 1.5px solid #000; margin-bottom: 20px; font-family: Arial; font-size: 11px;">
+                    <div style="text-align: center; border-bottom: 1.5px solid #000; padding: 5px; font-weight: bold; background: #f0f0f0;">Only for course Teacher</div>
+                    <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                        <tr style="border-bottom: 1px solid #000;">
+                            <th style="padding: 5px; border-right: 1px solid #000;">Criteria</th>
+                            <th style="border-right: 1px solid #000;">Needs Imp.</th>
+                            <th style="border-right: 1px solid #000;">Developing</th>
+                            <th style="border-right: 1px solid #000;">Sufficient</th>
+                            <th style="border-right: 1px solid #000;">Above Avg.</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr><td style="padding: 10px; border-right: 1px solid #000; text-align: left;">Understanding</td><td border-right: 1px solid #000;></td><td></td><td></td><td></td><td>3</td></tr>
                     </table>
                 </div>`;
-                bodyHTML = `<div style="position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column; width: 85%; margin: 10px auto; text-align: left; font-size: 18px; line-height: 2.8; font-weight: bold; font-family: 'Times New Roman', serif;">
-                                <p>Course Code: ${d.code}</p> <p>Course Name: ${d.title}</p>
-                                <p>Lab No: ${d.lNo}</p> <p>Lab Title: ${d.lTitle}</p>
-                                <p>Semester: ${d.sem}</p>
-                            </div>`;
+                midContent = `<div style="font-size: 18px; line-height: 2.8; font-weight: bold;">
+                    <p>Course Code: ${d.code}</p><p>Course Name: ${d.title}</p>
+                    <p>Lab No: ${d.lNo}</p><p>Lab Title: ${d.lTitle}</p>
+                    <p>Semester: ${d.sem}</p>
+                </div>`;
             } else {
-                headerText = (currentMode === 'assign' ? "ASSIGNMENT SUBMISSION" : "LAB ASSESSMENT SUBMISSION");
-                let labelNo = (currentMode === 'assign' ? "Assignment No" : "Assessment No");
-                let labelTitle = (currentMode === 'assign' ? "Topic Name" : "Assessment Title");
-                let valNo = (currentMode === 'assign' ? d.aNo : d.assessNo);
-                let valTitle = (currentMode === 'assign' ? d.topic : d.assessTitle);
+                headerLabel = currentMode === 'assign' ? "ASSIGNMENT SUBMISSION" : "LAB ASSESSMENT SUBMISSION";
+                let no = currentMode === 'assign' ? d.aNo : d.assessNo;
+                let title = currentMode === 'assign' ? d.topic : d.assessTitle;
+                let labelNo = currentMode === 'assign' ? "Assignment No" : "Assessment No";
+                let labelTitle = currentMode === 'assign' ? "Topic Name" : "Assessment Title";
 
-                bodyHTML = `<div style="position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; font-family: 'Times New Roman', serif; width: 85%; margin: 0 auto; text-align: left; line-height: 4.5; font-size: 21px;">
-                                <p><strong>Course Code:</strong> ${d.code}</p>
-                                <p><strong>Course Name:</strong> ${d.title}</p>
-                                <p><strong>Semester:</strong> ${d.sem}</p>
-                                <p><strong>${labelNo}:</strong> ${valNo}</p>
-                                <p><strong>${labelTitle}:</strong> ${valTitle}</p>
-                            </div>`;
+                midContent = `<div style="line-height: 4.5; font-size: 21px; font-family: 'Times New Roman';">
+                    <p><strong>Course Code:</strong> ${d.code}</p>
+                    <p><strong>Course Name:</strong> ${d.title}</p>
+                    <p><strong>Semester:</strong> ${d.sem}</p>
+                    <p><strong>${labelNo}:</strong> ${no}</p>
+                    <p><strong>${labelTitle}:</strong> ${title}</p>
+                </div>`;
             }
 
             outputPage.innerHTML = `
-                <div id="captureArea" style="position: relative; width: 794px; height: 1123px; padding: 45px; border: ${currentMode !== 'lab' ? '14px double #003366' : '1px solid #000'}; box-sizing: border-box; background: #fff; margin: 0 auto; display: flex; flex-direction: column; overflow: hidden;">
+                <div id="captureArea" style="position: relative; width: 794px; height: 1123px; padding: 50px; border: ${currentMode === 'lab' ? '1px solid #000' : '14px double #003366'}; box-sizing: border-box; background: #fff; margin: 0 auto; display: flex; flex-direction: column; overflow: hidden;">
                     ${watermark}
-                    <div style="position: relative; z-index: 1; text-align: center; margin-bottom: 20px;">
-                        <img src="${LOCAL_LOGO}" style="height: 75px;">
-                        <h1 style="font-size: 22px; color: #003366; margin: 12px 0 4px 0; font-family: 'Arial Black', sans-serif;">DAFFODIL INTERNATIONAL UNIVERSITY</h1>
-                        <h2 style="font-size: 15px; font-weight: bold; letter-spacing: 1.5px;">${headerText}</h2>
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="${LOCAL_LOGO}" style="height: 80px;">
+                        <h1 style="font-size: 24px; color: #003366; margin: 10px 0;">DAFFODIL INTERNATIONAL UNIVERSITY</h1>
+                        <h2 style="font-size: 16px; font-weight: bold;">${headerLabel}</h2>
                     </div>
-                    ${markingTable}
-                    ${bodyHTML}
-                    <div style="position: relative; z-index: 1; display: flex; justify-content: space-between; margin-top: auto; padding-top: 40px; font-family: 'Times New Roman', serif; width: 90%; margin: 0 auto;">
-                        <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px;">
-                            <p style="font-size: 13px; font-weight: bold; color: #666; margin: 0 0 5px 0;">SUBMITTED TO</p>
-                            <p style="font-size: 18px; font-weight: bold; margin: 0;">${d.fname}</p>
-                            <p style="font-size: 15px; margin: 4px 0;">${d.fdes}</p>
-                            <p style="font-size: 14px; margin: 0;">${d.fdept}</p>
-                        </div>
-                        <div style="flex: 1; border-left: 6px solid #003366; padding-left: 15px; margin-left: 40px;">
-                            <p style="font-size: 13px; font-weight: bold; color: #666; margin: 0 0 5px 0;">SUBMITTED BY</p>
-                            <p style="font-size: 17px; margin: 0;">Name: <b>${d.sname}</b></p>
-                            <p style="font-size: 15px; margin: 4px 0;">ID: <b>${d.sid}</b></p>
-                            <p style="font-size: 13px; margin-top: 5px;">Date: ${d.date}</p>
-                        </div>
+                    ${markingBox}
+                    <div style="flex-grow: 1; width: 85%; margin: 0 auto;">${midContent}</div>
+                    <div style="display: flex; justify-content: space-between; font-family: 'Times New Roman'; margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <div><p><strong>SUBMITTED TO:</strong></p><p>${d.fname}</p><p>${d.fdes}</p><p>${d.fdept}</p></div>
+                        <div style="text-align: right;"><p><strong>SUBMITTED BY:</strong></p><p>${d.sname}</p><p>${d.sid}</p><p>Date: ${d.date}</p></div>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 25px;">
-                    <button id="downloadPDF" style="padding: 12px 25px; background: #d9534f; color: white; border: none; cursor: pointer; font-weight: bold; border-radius: 5px;">Download PDF</button>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button id="downloadPDF" style="padding: 15px 30px; background: #d9534f; color: white; border: none; cursor: pointer; border-radius: 5px; font-weight: bold;">Download PDF</button>
                 </div>`;
 
-            // Download PDF
             document.getElementById('downloadPDF').onclick = function() {
                 const { jsPDF } = window.jspdf;
-                html2canvas(document.querySelector("#captureArea"), { scale: 3 }).then(canvas => {
+                html2canvas(document.querySelector("#captureArea"), { scale: 2 }).then(canvas => {
                     const pdf = new jsPDF('p', 'mm', 'a4');
                     pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
-                    pdf.save(`DIU-${currentMode}-Cover-Page.pdf`);
+                    pdf.save(`DIU-${currentMode}.pdf`);
                 });
             };
             
