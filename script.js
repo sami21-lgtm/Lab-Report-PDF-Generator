@@ -16,48 +16,48 @@ window.onload = function() {
 
     let currentMode = 'lab';
 
-    // 1. Toggle Logic
+    // 1. Toggle Mode Logic
     function setMode(mode) {
         currentMode = mode;
-        labBtn.classList.toggle('active', mode === 'lab');
-        assignBtn.classList.toggle('active', mode === 'assign');
-        assessBtn.classList.toggle('active', mode === 'assess');
+        if (labBtn) labBtn.classList.toggle('active', mode === 'lab');
+        if (assignBtn) assignBtn.classList.toggle('active', mode === 'assign');
+        if (assessBtn) assessBtn.classList.toggle('active', mode === 'assess');
 
-        labOnly.style.display = (mode === 'lab' ? 'block' : 'none');
-        assignOnly.style.display = (mode === 'assign' ? 'block' : 'none');
-        assessOnly.style.display = (mode === 'assess' ? 'block' : 'none');
+        if (labOnly) labOnly.style.display = (mode === 'lab' ? 'block' : 'none');
+        if (assignOnly) assignOnly.style.display = (mode === 'assign' ? 'block' : 'none');
+        if (assessOnly) assessOnly.style.display = (mode === 'assess' ? 'block' : 'none');
     }
 
-    labBtn.onclick = () => setMode('lab');
-    assignBtn.onclick = () => setMode('assign');
-    assessBtn.onclick = () => setMode('assess');
+    if (labBtn) labBtn.onclick = () => setMode('lab');
+    if (assignBtn) assignBtn.onclick = () => setMode('assign');
+    if (assessBtn) assessBtn.onclick = () => setMode('assess');
 
     // 2. Generation Logic
     if (genBtn) {
         genBtn.onclick = function() {
             const d = {
-                code: document.getElementById('courseCode').value || '',
-                title: document.getElementById('courseTitle').value || '',
-                sec: document.getElementById('section').value || '',
-                sem: document.getElementById('semester').value || '',
-                sid: document.getElementById('sid').value || '',
-                sname: document.getElementById('sname').value || '',
-                sdept: document.getElementById('sdepartment').value || '', 
-                fname: document.getElementById('fname').value || '',
-                fdes: document.getElementById('fdesignation').value || '',
-                fdept: document.getElementById('fdepartment').value || '',
-                date: (document.getElementById('dd').value || '00') + '/' + (document.getElementById('mm').value || '00') + '/2026',
-                lNo: document.getElementById('labNo').value || '',
-                lTitle: document.getElementById('labTitle').value || '',
-                aNo: document.getElementById('assignNo').value || '', 
-                topic: document.getElementById('topicName').value || '',
-                assessNo: document.getElementById('assessNo').value || '',
-                assessTitle: document.getElementById('assessTitle').value || ''
+                code: document.getElementById('courseCode')?.value || '',
+                title: document.getElementById('courseTitle')?.value || '',
+                sec: document.getElementById('section')?.value || '',
+                sem: document.getElementById('semester')?.value || '',
+                sid: document.getElementById('sid')?.value || '',
+                sname: document.getElementById('sname')?.value || '',
+                sdept: document.getElementById('sdepartment')?.value || '', 
+                fname: document.getElementById('fname')?.value || '',
+                fdes: document.getElementById('fdesignation')?.value || '',
+                fdept: document.getElementById('fdepartment')?.value || '',
+                date: (document.getElementById('dd')?.value || '00') + '/' + (document.getElementById('mm')?.value || '00') + '/2026',
+                lNo: document.getElementById('labNo')?.value || '',
+                lTitle: document.getElementById('labTitle')?.value || '',
+                aNo: document.getElementById('assignNo')?.value || '', 
+                topic: document.getElementById('topicName')?.value || '',
+                assessNo: document.getElementById('assessNo')?.value || '',
+                assessTitle: document.getElementById('assessTitle')?.value || ''
             };
 
             let watermark = (currentMode !== 'lab') ? `
                 <div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%) rotate(-35deg); opacity: 0.07; z-index: 0; pointer-events: none; width: 80%; text-align: center;">
-                    <img src="${LOCAL_LOGO}" style="width: 450px;">
+                    <img src="${LOCAL_LOGO}" style="width: 450px;" alt="DIU Logo">
                     <h1 style="font-size: 90px; font-family: 'Arial Black', sans-serif; margin-top: 10px; color: #000;">DIU</h1>
                 </div>` : '';
 
@@ -115,7 +115,7 @@ window.onload = function() {
                         ${watermark}
                         
                         <div style="text-align: center; margin-bottom: 30px; position: relative; z-index: 2;">
-                            <img src="${LOCAL_LOGO}" style="height: 85px;">
+                            <img src="${LOCAL_LOGO}" style="height: 85px;" alt="DIU Logo" onerror="this.style.display='none'">
                             <h1 style="font-size: 26px; color: #003366; margin: 15px 0 5px 0; font-family: Arial;">DAFFODIL INTERNATIONAL UNIVERSITY</h1>
                             <h2 style="font-size: 16px; border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px; font-family: Arial; font-weight: bold;">${headText}</h2>
                         </div>
@@ -161,23 +161,25 @@ window.onload = function() {
                     </div>
                 </div>`;
 
-            // PDF Action
+            // Optimized PDF Download Action (Compressed & Fast)
             document.getElementById('downloadPDF').onclick = function() {
                 const { jsPDF } = window.jspdf;
                 const element = document.querySelector("#captureArea");
                 
                 html2canvas(element, { 
-                    scale: 3, 
+                    scale: 2, // 3 এর পরিবর্তে 2 ব্যবহার করায় সাইজ অনেক কমবে
                     useCORS: true,
                     backgroundColor: "#ffffff"
                 }).then(canvas => {
                     const pdf = new jsPDF('p', 'mm', 'a4');
-                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
+                    // PNG এর বদলে JPEG (80% Quality) কম্প্রেশন দেওয়া হয়েছে
+                    const imgData = canvas.toDataURL('image/jpeg', 0.80); 
+                    pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297, undefined, 'FAST');
                     pdf.save(`DIU-${currentMode}.pdf`);
                 });
             };
             
-            previewArea.style.display = 'block';
+            if (previewArea) previewArea.style.display = 'block';
             window.scrollTo({ top: outputPage.offsetTop - 50, behavior: 'smooth' });
         };
     }
